@@ -1,34 +1,58 @@
 # MeXE402_Midterm_-Evangelista-Malabanan-
 This is repository for Midterm in Elective 2
-Introduction (Overview of Linear Regression)
-Linear regression is one of the most fundamental algorithms in supervised machine learning. It is a method used to model the relationship between a dependent variable (target) and one or more independent variables (features). In simple linear regression, we aim to predict a continuous output variable based on one input feature by fitting a line to the data that minimizes the difference between the predicted and actual values. When multiple features are used, the model becomes a multiple linear regression. Linear regression models are widely applied in various fields, including economics, biology, and real estate, to understand and predict trends. In this project, linear regression will be applied to predict the median value of homes in different Boston suburbs based on several socio-economic and environmental factors.
-Introduction (Overview of Linear Regression for the Given Dataset)
-Linear regression is a fundamental statistical technique used to model the relationship between a dependent variable (target) and one or more independent variables (features). In this project, we will apply multiple linear regression to explore how different socio-economic and environmental factors influence the housing market in Boston suburbs, using a dataset that records various attributes of the towns in the Boston area.
-The goal of this linear regression analysis is to predict the median value of owner-occupied homes (the target variable, MEDV) using a variety of features such as crime rate (CRIM), the average number of rooms per dwelling (RM), proximity to highways (RAD), and others. By building a linear regression model, we aim to quantify the strength of the relationships between these features and housing prices.
-Through this process, we will be able to answer key questions, such as:
-How do environmental factors like air quality (NOX) or proximity to the Charles River (CHAS) impact home values?
-Do higher property taxes (TAX) and pupil-teacher ratios (PTRATIO) lead to lower housing prices?
-Can socio-economic factors like the crime rate (CRIM) or percentage of lower-status residents (LSTAT) be used to explain fluctuations in real estate prices?
-The linear regression model will help provide insights into the Boston housing market by offering a data-driven approach to predicting property values, which could be valuable for urban planners, real estate investors, or economists studying the area.
+## **Introduction (Overview of Linear Regression)**
 
-Dataset Description
-The dataset contains information about various factors that may influence the value of homes in Boston suburbs, derived from the Boston Standard Metropolitan Statistical Area (SMSA) in 1970. It includes 505 entries, each representing a different town or suburb. The dataset consists of the following features:
-CRIM: Per capita crime rate by town
-ZN: Proportion of residential land zoned for large lots
-INDUS: Proportion of non-retail business acres per town
-CHAS: Whether the town bounds the Charles River (1 for yes, 0 for no)
-NOX: Nitric oxides concentration
-RM: Average number of rooms per dwelling
-AGE: Proportion of owner-occupied units built before 1940
-DIS: Weighted distances to employment centers
-RAD: Index of accessibility to highways
-TAX: Property tax rate per $10,000
-PTRATIO: Pupil-teacher ratio
-B: A measure of racial diversity
-LSTAT: Percentage of lower-status residents
-MEDV: Median value of homes, which is the target variable in this analysis.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Linear regression is one of the most fundamental algorithms in supervised machine learning. It is a method used to model the relationship between a dependent variable (target) and one or more independent variables (features). In simple linear regression, we aim to predict a continuous output variable based on one input feature by fitting a line to the data that minimizes the difference between the predicted and actual values. When multiple features are used, the model becomes a multiple linear regression. Linear regression models are widely applied in various fields, including economics, biology, and real estate, to understand and predict trends. In this project, linear regression will be applied to predict the median value of homes in different Boston suburbs based on several socio-economic and environmental factors.
+<br>
+## **Introduction (Overview of Linear Regression for the Given Dataset)**
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Linear regression is a fundamental statistical technique used to model the relationship between a dependent variable (target) and one or more independent variables (features). In this project, we will apply multiple linear regression to explore how different socio-economic and environmental factors influence the housing market in Boston suburbs, using a dataset that records various attributes of the towns in the Boston area.
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The goal of this linear regression analysis is to predict the median value of owner-occupied homes (the target variable, MEDV) using a variety of features such as crime rate (CRIM), the average number of rooms per dwelling (RM), proximity to highways (RAD), and others. By building a linear regression model, we aim to quantify the strength of the relationships between these features and housing prices.
+Through this process, we will be able to answer key questions, such as:
+<br>
+How do environmental factors like air quality (NOX) or proximity to the Charles River (CHAS) impact home values?
+<br>
+Do higher property taxes (TAX) and pupil-teacher ratios (PTRATIO) lead to lower housing prices?
+<br>
+Can socio-economic factors like the crime rate (CRIM) or percentage of lower-status residents (LSTAT) be used to explain fluctuations in real estate prices?
+<br>
+The linear regression model will help provide insights into the Boston housing market by offering a data-driven approach to predicting property values, which could be valuable for urban planners, real estate investors, or economists studying the area.
+<be>
+
+## **Dataset Description**
+The dataset contains information about various factors that may influence the value of homes in Boston suburbs, derived from the Boston Standard Metropolitan Statistical Area (SMSA) in 1970. It includes 505 entries, each representing a different town or suburb. The dataset consists of the following features:<br>
+<br>
+**CRIM:** Per capita crime rate by town
+<br>
+**ZN:** Proportion of residential land zoned for large lots
+<br>
+**INDUS:** Proportion of non-retail business acres per town
+<br>
+**CHAS:** Whether the town bounds the Charles River (1 for yes, 0 for no)
+<br>
+**NOX:** Nitric oxides concentration
+<br>
+**RM:** Average number of rooms per dwelling
+<br>
+**AGE:** Proportion of owner-occupied units built before 1940
+<br>
+**DIS:** Weighted distances to employment centers
+<br>
+**RAD:** Index of accessibility to highways
+<br>
+**TAX:** Property tax rate per $10,000
+<br>
+**PTRATIO:** Pupil-teacher ratio
+<br>
+**B:** A measure of racial diversity
+<br>
+**LSTAT:** Percentage of lower-status residents
+<br>
+**MEDV:** Median value of homes, which is the target variable in this analysis.
 The goal is to use these features to predict MEDV, providing insight into the factors that most influence housing prices.
-Project Objectives
+
+## Project Objectives
 The main objective of this project is to use linear regression to predict the median value of homes in Boston suburbs. Through the analysis, we aim to:
 Identify which features have the most significant impact on housing prices.
 Build a regression model that can predict housing prices based on various factors, such as crime rate, number of rooms, and proximity to employment centers.
