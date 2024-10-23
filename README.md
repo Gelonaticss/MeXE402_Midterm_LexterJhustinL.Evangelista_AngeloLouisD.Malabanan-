@@ -193,8 +193,8 @@ Hunter, J. D. (2007). Matplotlib: A 2D graphics environment. Computing in Scienc
 Waskom, M. (2021). Seaborn: Statistical data visualization. Journal of Open Source Software, 6(60), 3021. Available from https://seaborn.pydata.org/ 
 
 UCI Machine Learning Repository (n.d.). Boston Housing Data. Retrieved from https://archive.ics.uci.edu/ml/datasets/Housing 
-
-
+<br>
+<br>
 
 
 ## **Introduction (Overview of Logistic Regression)**
@@ -224,5 +224,9 @@ Dataset used for binary classification tasks, particularly in the context of dia
 **Outcome:** A binary variable indicating the presence (1) or absence (0) of diabetes.
 <br>
 <br>
+
+## **Project Objectives**
+The main objective of this project is to develop a logistic regression model to accurately predict the likelihood of diabetes in patients using health-related metrics from the Pima Indian Diabetes dataset. By identifying significant risk factors and assessing model performance.
+
 
 
