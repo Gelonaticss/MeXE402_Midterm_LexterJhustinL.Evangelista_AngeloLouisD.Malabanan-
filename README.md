@@ -226,7 +226,7 @@ Dataset used for binary classification tasks, particularly in the context of dia
 <br>
 
 ## **Project Objectives**
-The main objective of this project is to develop a logistic regression model to accurately predict the likelihood of diabetes in patients using health-related metrics from the Pima Indian Diabetes dataset. By identifying significant risk factors and assessing model performance.
+
 
 
 
