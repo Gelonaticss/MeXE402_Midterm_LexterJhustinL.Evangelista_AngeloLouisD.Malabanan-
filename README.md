@@ -6,10 +6,13 @@ This is repository for Midterm in Elective 2
 <br>
 ## **Introduction (Overview of Linear Regression for the Given Dataset)**
 <br>
+<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Linear regression is a fundamental statistical technique used to model the relationship between a dependent variable (target) and one or more independent variables (features). In this project, we will apply multiple linear regression to explore how different socio-economic and environmental factors influence the housing market in Boston suburbs, using a dataset that records various attributes of the towns in the Boston area.
+<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The goal of this linear regression analysis is to predict the median value of owner-occupied homes (the target variable, MEDV) using a variety of features such as crime rate (CRIM), the average number of rooms per dwelling (RM), proximity to highways (RAD), and others. By building a linear regression model, we aim to quantify the strength of the relationships between these features and housing prices.
 Through this process, we will be able to answer key questions, such as:
+<br>
 <br>
 How do environmental factors like air quality (NOX) or proximity to the Charles River (CHAS) impact home values?
 <br>
