@@ -226,6 +226,28 @@ Dataset used for binary classification tasks, particularly in the context of dia
 <br>
 
 ## **Project Objectives**
+These objectives aim to provide a structured approach to understanding and predicting diabetes risk within the Pima Indian population using logistic regression.
+1. Data Collection and Preparation
+Gather and preprocess the Pima Indian diabetes dataset, ensuring data quality and addressing any missing values or inconsistencies.
+
+2. Exploratory Data Analysis (EDA)
+Conduct an EDA to identify patterns, correlations, and key features related to diabetes occurrence among the Pima Indian population.
+
+3. Feature Selection
+Utilize statistical methods to select the most relevant features that contribute to the prediction of diabetes, reducing dimensionality for improved model performance.
+
+4. Model Development
+Develop a logistic regression model to predict the likelihood of diabetes in individuals based on selected features.
+
+5. Model Evaluation
+Assess the model's performance using metrics such as accuracy, precision, recall, F1 score, and AUC-ROC, ensuring its reliability and validity.
+
+6. Interpretation of Results
+Analyze the model coefficients to interpret the influence of different features on diabetes risk, providing insights into potential risk factors.
+
+7. Reporting and Dissemination
+Prepare a comprehensive report summarizing the methodology, findings, and recommendations, and disseminate the results to stakeholders and the broader community.
+<br>
 
 
 
