@@ -197,4 +197,32 @@ UCI Machine Learning Repository (n.d.). Boston Housing Data. Retrieved from http
 
 
 
+## **Introduction (Overview of Logistic Regression)**
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Logistic regression is a powerful statistical method used for binary classification tasks, where the goal is to predict the probability of a certain outcome based on one or more predictor variables. Unlike linear regression, which predicts continuous outcomes, logistic regression outputs probabilities that are transformed into binary outcomes using the logistic function. This function maps any input value to a range between 0 and 1, making it ideal for scenarios where outcomes are categorical, such as determining whether an email is spam or not, whether a customer will purchase a product, or if a patient has a certain disease. The model works by estimating the relationship between the dependent variable (the outcome) and independent variables (the predictors) using maximum likelihood estimation. It is widely used in various fields, including healthcare, finance, and social sciences, due to its interpretability and efficiency. Logistic regression also allows for the inclusion of interaction terms and polynomial features, enhancing its predictive power while maintaining simplicity. Logistic regression models the relationship between these predictor variables and the binary outcome of diabetes diagnosis (1 for positive diagnosis, 0 for negative).
+<br>
+## **Dataset Description** 
+Dataset used for binary classification tasks, particularly in the context of diabetes prediction. It contains data on female patients of Pima Indian heritage, focusing on various health-related measurements. The dataset includes the following features:
+<br>
+<br>
+**Pregnancies:** Number of times the patient has been pregnant.
+<br>
+**Glucose:** Plasma glucose concentration measured 2 hours after an oral glucose tolerance test.
+<br>
+**Blood Pressure:** Diastolic blood pressure (mm Hg).
+<br>
+**Skin Thickness:** Triceps skin fold thickness (mm).
+<br>
+**Insulin:** 2-Hour serum insulin levels (mu U/ml).
+<br>
+**BMI:** Body mass index, calculated as weight in kg divided by the square of height in meters.
+<br>
+**Diabetes Pedigree Function:** A score that reflects the genetic predisposition to diabetes based on family history.
+<br>
+**Age:** Age of the patient in years.
+<br>
+**Outcome:** A binary variable indicating the presence (1) or absence (0) of diabetes.
+<br>
+<br>
+
 
