@@ -182,6 +182,22 @@ Residual Plot: Shows the errors. If points are randomly scattered around the red
 11. Making Predictions on New Data
 Finally, you use the trained model to predict the price of a new house based on its features.
 
+Here are some reasons why Random Forest and XGBoost often perform better than Linear Regression for the Boston housing dataset:
+
+Captures Non-linear Relationships: Random Forest and XGBoost can model complex, non-linear relationships, while Linear Regression assumes a linear relationship between input features and output.
+
+Feature Interaction Handling: These ensemble models can automatically capture interactions between features, which often exist in real-world data but aren't accounted for in linear regression without manual feature engineering.
+
+Less Impact from Outliers: Ensemble models are less sensitive to outliers in the data. Linear Regression, on the other hand, is highly influenced by outliers, which can skew predictions.
+
+Robustness with Collinearity: If input features are correlated (multicollinearity), Random Forest and XGBoost handle it better. Linear Regression is sensitive to multicollinearity, which can reduce its accuracy.
+
+Better Performance on High-dimensional Data: Both Random Forest and XGBoost tend to perform well even with high-dimensional and complex datasets due to their ensemble nature.
+
+Automatic Feature Importance Evaluation: These models can assess feature importance, helping in selecting the most influential features. Linear Regression requires separate statistical tests to determine feature importance.
+
+Overall, Random Forest and XGBoost are better suited to handle complex, real-world datasets where the relationships between features and the target variable are often non-linear and multifaceted.
+
 
 REFERENCES
 Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel, O., ... & Duchesnay, É. (2011). Scikit-learn: Machine learning in Python. Journal of Machine Learning Research, 12, 2825-2830. Available from https://scikit-learn.org/stable/index.html 
@@ -193,6 +209,17 @@ Hunter, J. D. (2007). Matplotlib: A 2D graphics environment. Computing in Scienc
 Waskom, M. (2021). Seaborn: Statistical data visualization. Journal of Open Source Software, 6(60), 3021. Available from https://seaborn.pydata.org/ 
 
 UCI Machine Learning Repository (n.d.). Boston Housing Data. Retrieved from https://archive.ics.uci.edu/ml/datasets/Housing 
+
+Géron, A. (2019). Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems (2nd ed.). O'Reilly Media. This book provides in-depth explanations of ensemble methods, including Random Forest and XGBoost, and discusses why they work well in complex data scenarios.
+
+Breiman, L. (2001). Random forests. Machine Learning, 45(1), 5-32. https://doi.org/10.1023/A:1010933404324
+Breiman's original paper explains the concept of Random Forests, highlighting its advantages over linear models and its robustness to outliers and multicollinearity.
+
+Chen, T., & Guestrin, C. (2016). XGBoost: A scalable tree boosting system. Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining, 785-794. https://doi.org/10.1145/2939672.2939785
+This paper provides the foundational theory behind XGBoost, describing its ability to handle non-linear relationships, feature interactions, and other complexities in data.
+
+Kuhn, M., & Johnson, K. (2013). Applied predictive modeling. Springer. This text explores various predictive modeling approaches and discusses situations where ensemble methods like Random Forest and boosting algorithms are preferable over linear methods.
+
 <br>
 <br>
 
