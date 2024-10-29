@@ -174,11 +174,25 @@
 4. **Data Split**:
    - Allocates 20% of the data for **testing** and 80% for **training**.
 5. **Standardizing Features**:
-   - This line imports the **StandardScaler** class, which is used to standardize features by removing the mean and scaling to unit variance.
+   - This is used to standardize features by removing the mean and scaling to unit variance.
 6. **Creating a Logistic Regression Model**:
    - Created and assigned to the variable model.
 7. **Training the Model**:
-   - Using the training dataset **X_train** (features) and **y_train** (target variable)
+   - Using the training dataset **X_train** (features) and **y_train** (target variable).
+8. **Making Predictions**:
+   - Standardize test data, then predict class labels using trained model.
+9. **Prediction for a Specific Input**:
+   - Predict outcome using logistic regression model.
+10. **Calculating Accuracy**:
+   - Measures how accurate those predictions are compared to the true labels.
+11. **Importing Confusion Matrix**:
+   - This code creates a confusion matrix to visualize model performance by comparing actual and predicted outcomes.
+12. **Calculating Precision**:
+   - Precision indicates how many of the predicted positive cases were actually positive.
+13. **Calculating F1 Score**:
+   - Providing a balance between the two metrics.
+14. **Calculating the Recall**:
+   - Indicating how effectively the model identifies positive cases from the actual positives.
 ---
 
 ## **References**
