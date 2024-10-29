@@ -175,7 +175,7 @@
    - Allocates 20% of the data for **testing** and 80% for **training**.
 5. **Standardizing Features**:
    - This line imports the **StandardScaler** class, which is used to standardize features by removing the mean and scaling to unit variance.
-6.  **Creating a Logistic Regression Model**:
+6. **Creating a Logistic Regression Model**:
    - Created and assigned to the variable model.
 7. **Training the Model**:
    - Using the training dataset **X_train** (features) and **y_train** (target variable)
