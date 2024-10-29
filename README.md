@@ -152,7 +152,7 @@
    - Develop a **logistic regression model** for diabetes prediction.
 
 5. **Model Evaluation**:
-   - Evaluate using metrics such as **accuracy, precision, recall, F1 score**, and **AUC-ROC**.
+   - Evaluate using metrics such as **accuracy, precision, recall,** and **F1 score**.
 
 6. **Result Interpretation**:
    - Analyze coefficients to interpret influence on diabetes risk.
