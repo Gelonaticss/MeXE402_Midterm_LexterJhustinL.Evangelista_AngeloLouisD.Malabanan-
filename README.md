@@ -127,15 +127,15 @@
 
 - Used for **binary classification** tasks, like predicting diabetes.
 - **Features**:
-  - **Pregnancies**: Number of times the patient was pregnant.
-  - **Glucose**: Plasma glucose concentration post-oral glucose tolerance test.
-  - **Blood Pressure**: Diastolic blood pressure (mm Hg).
-  - **Skin Thickness**: Triceps skin fold thickness (mm).
-  - **Insulin**: Serum insulin levels post-test (mu U/ml).
-  - **BMI**: Body mass index.
-  - **Diabetes Pedigree Function**: Genetic predisposition score.
-  - **Age**: Patient age.
-  - **Outcome**: Diabetes presence (1) or absence (0).
+  - **Pregnancies**: *Number of times the patient was pregnant.*
+  - **Glucose**: *Plasma glucose concentration post-oral glucose tolerance test.*
+  - **Blood Pressure**: *Diastolic blood pressure (mm Hg).*
+  - **Skin Thickness**: *Triceps skin fold thickness (mm).*
+  - **Insulin**: *Serum insulin levels post-test (mu U/ml).*
+  - **BMI**: *Body mass index.*
+  - **Diabetes Pedigree Function**: *Genetic predisposition score.*
+  - **Age**: *Patient age.*
+  - **Outcome**: *Diabetes presence (1) or absence (0).*
 
 ## **Project Objectives for Logistic Regression**
 
