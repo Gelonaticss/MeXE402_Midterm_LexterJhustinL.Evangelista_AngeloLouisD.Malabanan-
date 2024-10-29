@@ -205,14 +205,14 @@
 **2. Importance of Features**
  - **Feature Coefficients:** In logistic regression, the model assigns a coefficient to each feature, representing its influence on the probability of having diabetes:
   - **Positive Coefficients:** Features with positive coefficients increase the odds of diabetes. For example:
-    -**Glucose Level:** Typically has a strong positive coefficient, indicating that higher glucose levels significantly elevate diabetes risk.
-    -**Body Mass Index (BMI):** Generally shows a positive relationship, where increased BMI correlates with higher diabetes likelihood, reflecting obesity's role as a risk factor.
-  -**Negative Coefficients:** Features with negative coefficients indicate a decrease in the odds of diabetes as the feature value increases. Understanding these relationships helps identify protective factors.
--**Key Features Influencing Diabetes:**
-  -**Glucose:** Often the most critical predictor, as high glucose levels directly indicate diabetes risk.
-  -**BMI:** Important for assessing obesity-related risks.
-  -**Age:** Typically shows a positive correlation, with older individuals at greater risk.
-  -**Insulin Levels and Blood Pressure:** These features also contribute significantly to diabetes prediction, indicating the model's capacity to incorporate a range of health metrics.
+    - **Glucose Level:** Typically has a strong positive coefficient, indicating that higher glucose levels significantly elevate diabetes risk.
+    - **Body Mass Index (BMI):** Generally shows a positive relationship, where increased BMI correlates with higher diabetes likelihood, reflecting obesity's role as a risk factor.
+  - **Negative Coefficients:** Features with negative coefficients indicate a decrease in the odds of diabetes as the feature value increases. Understanding these relationships helps identify protective factors.
+- **Key Features Influencing Diabetes:**
+  - **Glucose:** Often the most critical predictor, as high glucose levels directly indicate diabetes risk.
+  - **BMI:** Important for assessing obesity-related risks.
+  - **Age:** Typically shows a positive correlation, with older individuals at greater risk.
+  - **Insulin Levels and Blood Pressure:** These features also contribute significantly to diabetes prediction, indicating the model's capacity to incorporate a range of health metrics.
     
 
 ---
