@@ -163,25 +163,25 @@
 
 ## **Methodoloy**
 
-1. **Importing Libraries**:
+1.  **Importing Libraries**:
    - **pandas,numpy**: to access various functionalities.
    -  **scikit-learn**: Machine learning library for data splitting, scaling, modeling, and evaluation.
-2. **Loading Dataset**:
+2.  **Loading Dataset**:
    - Use **pd.read_csv()** for loading CSV files into a Pandas DataFrame, which can then be manipulated and analyzed easily.
-3. **Selecting Features (X):** and **Selecting Target Variable (y):**
+3.  **Selecting Features (X):** and **Selecting Target Variable (y):**
    - **X:** Contains the feature data (independent variables) that will be used to train the model.
    - **y:** Contains the target variable (dependent variable) that the model will attempt to predict.
-4. **Data Split**:
+4.  **Data Split**:
    - Allocates 20% of the data for **testing** and 80% for **training**.
-5. **Standardizing Features**:
+5.  **Standardizing Features**:
    - This is used to standardize features by removing the mean and scaling to unit variance.
-6. **Creating a Logistic Regression Model**:
+6.  **Creating a Logistic Regression Model**:
    - Created and assigned to the variable model.
-7. **Training the Model**:
+7.  **Training the Model**:
    - Using the training dataset **X_train** (features) and **y_train** (target variable).
-8. **Making Predictions**:
+8.  **Making Predictions**:
    - Standardize test data, then predict class labels using trained model.
-9. **Prediction for a Specific Input**:
+9.  **Prediction for a Specific Input**:
    - Predict outcome using logistic regression model.
 10. **Calculating Accuracy**:
    - Measures how accurate those predictions are compared to the true labels.
