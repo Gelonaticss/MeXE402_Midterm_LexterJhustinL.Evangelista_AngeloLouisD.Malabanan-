@@ -170,3 +170,4 @@
 4. UCI Machine Learning Repository. *Boston Housing Data*. [Link](https://archive.ics.uci.edu/ml/datasets/Housing)
 5. Breiman, L. (2001). Random forests. Machine Learning, 45(1), 5-32.[Link](https://doi.org/10.1023/A:1010933404324)
 6. Chen, T., & Guestrin, C. (2016). XGBoost: A scalable tree boosting system. Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining, 785-794..[Link](https://doi.org/10.1023/A:1010933404324)
+7. Mark Kiarie. *Logistic Regression on Pima Indian*. [Link](https://www.kaggle.com/code/markkiarie/kiarie-s-logistic-regression-on-pima-indians-ds) 
