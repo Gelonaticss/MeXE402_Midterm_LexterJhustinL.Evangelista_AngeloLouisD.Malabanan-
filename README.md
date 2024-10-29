@@ -160,6 +160,8 @@
 7. **Reporting**:
    - Summarize methodology, findings, and insights for stakeholders.
 
+
+## **Methodoloy**
 ---
 
 ## **References**
