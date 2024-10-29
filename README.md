@@ -202,7 +202,7 @@
   - **Accuracy:** An accuracy score around 82% indicates that the model is reasonably effective in distinguishing between diabetic and non-diabetic individuals.
   - **Precision:** The precision score indicates the proportion of true positive predictions out of all positive predictions made by the model.
   - **Recall:** Recall measures the model's ability to identify actual positive cases.
-**2. Importance of Features**
+- **2. Importance of Features**
  - **Feature Coefficients:** In logistic regression, the model assigns a coefficient to each feature, representing its influence on the probability of having diabetes:
   - **Positive Coefficients:** Features with positive coefficients increase the odds of diabetes. For example:
     - **Glucose Level:** Typically has a strong positive coefficient, indicating that higher glucose levels significantly elevate diabetes risk.
