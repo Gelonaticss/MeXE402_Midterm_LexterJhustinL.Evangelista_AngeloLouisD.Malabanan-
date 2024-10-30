@@ -194,7 +194,7 @@
 14. **Visualizing Corelation using Heatmap**:
     - To analyze the correlation between different features in the Pima Indian Diabetes dataset, helping to identify relationships and potential predictors for the target variable **(Outcome)**.
 15. **Visualizing Feature Distributions Using Boxplots**:
-    - To compare the distributions of various features in the Pima Indian Diabetes dataset with respect to the target variable (Outcome), using boxplots to identify trends, outliers, and distribution differences.
+    - To compare the distributions of various features in the Pima Indian Diabetes dataset with respect to the target variable **(Outcome)**, using boxplots to identify trends, outliers, and distribution differences.
 16. **Importing Confusion Matrix**:
     - This code creates a confusion matrix to visualize model performance by comparing actual and predicted outcomes.
 17. **Calculating Precision**:
