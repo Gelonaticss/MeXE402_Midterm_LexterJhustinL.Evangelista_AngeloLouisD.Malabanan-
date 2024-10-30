@@ -177,24 +177,24 @@
    - Allocates 20% of the data for **testing** and 80% for **training**.
 6. **Standardizing Features**:
    - This is used to standardize features by removing the mean and scaling to unit variance.
-7. **Creating a Logistic Regression Model**:
-   - Created and assigned to the variable model.
-8. **Training the Model**:
-   - Using the training dataset **X_train** (features) and **y_train** (target variable).
-9. **Making Predictions**:
-   - Standardize test data, then predict class labels using trained model.
-10. **Prediction for a Specific Input**:
-   - Predict outcome using logistic regression model.
-11. **Calculating Accuracy**:
-    - Measures how accurate those predictions are compared to the true labels.
-12. **Visualizing Predicted vs Actual Values**:
-    - To compare the predicted outcomes from a classification model with the actual outcomes in the Pima Indian Diabetes dataset, using a count plot for clear visual representation.
-13. **Visualizing Relationships Between Features Using Pairplot**:
-    - To explore the relationships between different features in the Pima Indian Diabetes dataset and understand how they relate to the target variable **(Outcome)** using a pairplot.
-14. **Visualizing Corelation using Heatmap**:
+7. **Visualizing Feature Distributions Using Boxplots**:
+   - To compare the distributions of various features in the Pima Indian Diabetes dataset with respect to the target variable **(Outcome)**, using boxplots to identify trends, outliers, and distribution differences.
+8. **Visualizing Corelation using Heatmap**:
     - To analyze the correlation between different features in the Pima Indian Diabetes dataset, helping to identify relationships and potential predictors for the target variable **(Outcome)**.
-15. **Visualizing Feature Distributions Using Boxplots**:
-    - To compare the distributions of various features in the Pima Indian Diabetes dataset with respect to the target variable **(Outcome)**, using boxplots to identify trends, outliers, and distribution differences.
+9. **Visualizing Relationships Between Features Using Pairplot**:
+    - To explore the relationships between different features in the Pima Indian Diabetes dataset and understand how they relate to the target variable **(Outcome)** using a pairplot.
+10. **Creating a Logistic Regression Model**:
+    - Created and assigned to the variable model.
+11. **Training the Model**:
+    - Using the training dataset **X_train** (features) and **y_train** (target variable).
+12. **Making Predictions**:
+    - Standardize test data, then predict class labels using trained model.
+13. **Prediction for a Specific Input**:
+    - Predict outcome using logistic regression model.
+14. **Calculating Accuracy**:
+    - Measures how accurate those predictions are compared to the true labels.
+15. **Visualizing Predicted vs Actual Values**:
+    - To compare the predicted outcomes from a classification model with the actual outcomes in the Pima Indian Diabetes dataset, using a count plot for clear visual representation.
 16. **Importing Confusion Matrix**:
     - This code creates a confusion matrix to visualize model performance by comparing actual and predicted outcomes.
 17. **Calculating Precision**:
