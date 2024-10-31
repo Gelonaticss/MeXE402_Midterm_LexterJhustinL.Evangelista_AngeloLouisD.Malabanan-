@@ -134,43 +134,40 @@
    
 ## Summary of Findings
 
-1. **Model Performance and Accuracy**
+1. **Model Performance Metrics**
    - **Cross-Validation Mean Squared Error (MSE)**: 8.1495
-     - The relatively low MSE indicates a good fit, though some room for improvement exists.
-   - **R-squared**: 0.8284
-     - This score suggests the model explains approximately 82.8% of the variance in `MEDV`, which is a strong indication of model accuracy.
+     - This value quantifies the average squared differences between the predicted and actual `MEDV` values. The lower the MSE, the better the model fits the data.
+     - Here, an MSE of 8.1495 suggests that the model is relatively accurate, though there is still some prediction error, potentially due to noise or non-linear relationships in the data.
+   - **R-squared (R²)**: 0.8284
+     - The R² value shows the proportion of variance in `MEDV` that is explained by the model’s features.
+     - An R² of 0.8284 means that about 82.8% of the variance in housing prices is captured by this model, indicating a strong fit.
    - **Adjusted R-squared**: 0.8018
-     - The adjusted R-squared is slightly lower than the R-squared value, accounting for the number of predictors in the model.
-   
-2. **Model Coefficients and Feature Impact**
-   - The table below shows each feature’s coefficient in predicting `MEDV`.
-   - **Interpretation**:
-     - Positive coefficients indicate an increase in `MEDV` as the feature value increases, while negative coefficients indicate a decrease.
-     - Notable high-impact features include:
-       - **RM** (Rooms per dwelling): Positive coefficient (+2.5128), suggesting that more rooms per dwelling increase `MEDV`.
-       - **PTRATIO** (Pupil-teacher ratio): Negative coefficient (-2.4339), suggesting that higher ratios are associated with lower `MEDV`.
-       - **LSTAT** (Lower status of the population): Negative coefficient (-2.5557), indicating that higher `LSTAT` correlates with lower `MEDV`.
+     - The Adjusted R² compensates for the number of predictors, adjusting R² downward if unnecessary variables are included.
+     - Here, an adjusted R² of 0.8018 suggests that most predictors are relevant, as there is only a slight reduction from the standard R².
 
-| Feature        | Coefficient |
-|----------------|-------------|
-| CRIM           | -0.8754     |
-| ZN             | 0.7944      |
-| INDUS          | -0.1957     |
-| CHAS           | 0.0576      |
-| NOX            | -1.6237     |
-| RM             | 2.5128      |
-| AGE            | -0.5803     |
-| DIS            | -2.5656     |
-| RAD            | 2.4216      |
-| TAX            | -2.4339     |
-| PTRATIO        | -1.9463     |
-| B              | 0.8237      |
-| LSTAT          | -2.5557     |
-| **Intercept**  | 21.6681     |
+2. **Feature Impact Analysis (Model Coefficients)**
+   - Coefficients represent the impact of each feature on `MEDV`. A positive coefficient implies that an increase in the feature value will increase `MEDV`, while a negative coefficient implies the opposite.
+   - The table below details each feature’s coefficient:
+
+| Feature        | Coefficient | Interpretation                                                                                     |
+|----------------|-------------|-----------------------------------------------------------------------------------------------------|
+| **CRIM**       | -0.8754     | Higher crime rates are associated with lower housing prices, possibly due to reduced neighborhood desirability. |
+| **ZN**         | 0.7944      | Residential land zoning for larger lots positively affects housing prices, suggesting exclusivity adds value.  |
+| **INDUS**      | -0.1957     | Higher industrial activity slightly decreases housing prices, potentially due to increased pollution or noise. |
+| **CHAS**       | 0.0576      | Proximity to the Charles River has a slight positive impact on housing prices, adding scenic or recreational value. |
+| **NOX**        | -1.6237     | Nitric oxide concentration, indicating pollution, negatively impacts housing prices significantly. |
+| **RM**         | 2.5128      | Average number of rooms per dwelling has the strongest positive impact, showing that larger homes are valued higher. |
+| **AGE**        | -0.5803     | Older properties are slightly less valuable, potentially due to wear or less modern features. |
+| **DIS**        | -2.5656     | Greater distance from employment centers decreases prices, indicating a preference for proximity to work. |
+| **RAD**        | 2.4216      | Accessibility to highways slightly increases prices, suggesting improved commute convenience. |
+| **TAX**        | -2.4339     | Higher property tax rates are associated with lower prices, as it increases the cost of owning property. |
+| **PTRATIO**    | -1.9463     | Higher student-teacher ratios negatively impact housing prices, likely reflecting school quality perceptions. |
+| **B**          | 0.8237      | A higher proportion of African American residents slightly increases housing prices.              |
+| **LSTAT**      | -2.5557     | Higher percentage of lower-status individuals significantly decreases prices, reflecting socioeconomic impact. |
+| **Intercept**  | 21.6681     | Baseline housing price when all predictors are zero; not directly interpretable due to lack of practical context. |
 
 3. **Comparison of Actual vs. Predicted Prices**
-   - Observed minor deviations between actual and predicted values, suggesting the model has good prediction alignment.
-   - The table below illustrates the comparison between actual and predicted `MEDV` values for a sample of test data.
+   - The table below provides a comparison of actual and predicted `MEDV` values, showing the model’s accuracy in specific instances.
 
 | Index | Actual Values | Predicted Values |
 |-------|---------------|------------------|
@@ -185,11 +182,14 @@
 | 8     | 18.2          | 19.111          |
 | 9     | 20.5          | 20.493          |
 
-4. **Visual Representation of Predictions**
-   - **Scatter Plot**:
-     - A scatter plot of actual vs. predicted `MEDV` values highlights that most points are close to the line of perfect prediction, indicating the model is performing well.
-   - **Residual Plot**:
-     - Residuals (errors) plot shows a near-random distribution around zero, which suggests minimal bias and variance in the model’s predictions.
+   - **Interpretation**:
+     - Most predicted values closely align with actual values, suggesting that the model captures important relationships in the data.
+     - Some discrepancies exist (e.g., index 2), highlighting that certain data points may have additional influencing factors or contain noise.
+
+4. **Visual Analysis of Predictions**
+   - **Scatter Plot of Actual vs. Predicted Values**:
+     - Points closely following the red diagonal line (indicating perfect prediction) show high prediction accuracy.
+     - Deviation from the line suggests areas where the model could improve, such as capturing non-linear relationships or additional predictors.
 
 ### Reasons why Random Forest and XGBoost often perform better than Linear Regression for the Boston housing dataset:
 
