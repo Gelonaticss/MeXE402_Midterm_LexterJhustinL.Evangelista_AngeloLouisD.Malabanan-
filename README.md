@@ -1,5 +1,38 @@
 # Midterm Project for Elective 2
 
+# Project Objectives
+
+1. **Understand the Dataset and Select Appropriate Variables**
+   - Explore and analyze the assigned dataset to understand its structure and variables.
+   - Identify suitable dependent variables for:
+     - **Linear Regression**: A continuous variable.
+     - **Logistic Regression**: A categorical variable.
+   - Justify the choice of dependent variables based on dataset characteristics and the objectives of each regression analysis.
+
+2. **Apply Regression Techniques to Real-World Data**
+   - Conduct a **Linear Regression Analysis** using the identified continuous variable.
+     - Preprocess data (handle missing values, outliers, normalization) to improve model accuracy.
+     - Train and evaluate the model, utilizing metrics such as R-squared and Mean Squared Error.
+     - Interpret the model coefficients to understand the relationship between dependent and independent variables.
+   - Conduct a **Logistic Regression Analysis** using the identified categorical variable.
+     - Preprocess data (categorical encoding, class balancing) to improve classification accuracy.
+     - Train and evaluate the model, utilizing metrics such as accuracy and confusion matrix.
+     - Discuss the model’s classification performance and feature importance.
+
+3. **Document and Share Findings through GitHub**
+   - Set up a well-structured GitHub repository to document the project, including:
+     - A clear overview of regression concepts and dataset description.
+     - Detailed steps for data preprocessing, model implementation, and analysis.
+     - Summaries of findings, interpretations of model results, and any observed limitations.
+
+4. **Present Key Insights and Reflections**
+   - Provide a clear and organized presentation on:
+     - The methodology applied in both Linear and Logistic Regression.
+     - Key findings and insights gained from the analyses.
+     - A reflection on the strengths and limitations of each regression approach as applied to the dataset.
+
+
+
 ## **Linear Regression**
 
 ### **What is Linear Regression**
