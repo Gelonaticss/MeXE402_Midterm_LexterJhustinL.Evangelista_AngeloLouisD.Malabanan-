@@ -2,7 +2,7 @@
 
 ## **Linear Regression**
 
-### **Overview of Linear Regression**
+### **What is Linear Regression**
 
 - **Linear regression** is a fundamental algorithm in *supervised machine learning*.
 - Used to model relationships between a **dependent variable** (*target*) and one or more **independent variables** (*features*).
