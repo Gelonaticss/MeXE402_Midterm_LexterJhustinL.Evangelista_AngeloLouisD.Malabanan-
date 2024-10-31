@@ -131,6 +131,65 @@
 14. **Visualizing Model Performance**
     - **Scatter Plot**: Compared actual vs. predicted values with a perfect prediction line to evaluate model accuracy visually.
     - **Residual Plot**: Plotted residuals (errors) against predictions to check for random distribution around zero, indicating model fit quality.
+   
+## Summary of Findings
+
+1. **Model Performance and Accuracy**
+   - **Cross-Validation Mean Squared Error (MSE)**: 8.1495
+     - The relatively low MSE indicates a good fit, though some room for improvement exists.
+   - **R-squared**: 0.8284
+     - This score suggests the model explains approximately 82.8% of the variance in `MEDV`, which is a strong indication of model accuracy.
+   - **Adjusted R-squared**: 0.8018
+     - The adjusted R-squared is slightly lower than the R-squared value, accounting for the number of predictors in the model.
+   
+2. **Model Coefficients and Feature Impact**
+   - The table below shows each feature’s coefficient in predicting `MEDV`.
+   - **Interpretation**:
+     - Positive coefficients indicate an increase in `MEDV` as the feature value increases, while negative coefficients indicate a decrease.
+     - Notable high-impact features include:
+       - **RM** (Rooms per dwelling): Positive coefficient (+2.5128), suggesting that more rooms per dwelling increase `MEDV`.
+       - **PTRATIO** (Pupil-teacher ratio): Negative coefficient (-2.4339), suggesting that higher ratios are associated with lower `MEDV`.
+       - **LSTAT** (Lower status of the population): Negative coefficient (-2.5557), indicating that higher `LSTAT` correlates with lower `MEDV`.
+
+| Feature        | Coefficient |
+|----------------|-------------|
+| CRIM           | -0.8754     |
+| ZN             | 0.7944      |
+| INDUS          | -0.1957     |
+| CHAS           | 0.0576      |
+| NOX            | -1.6237     |
+| RM             | 2.5128      |
+| AGE            | -0.5803     |
+| DIS            | -2.5656     |
+| RAD            | 2.4216      |
+| TAX            | -2.4339     |
+| PTRATIO        | -1.9463     |
+| B              | 0.8237      |
+| LSTAT          | -2.5557     |
+| **Intercept**  | 21.6681     |
+
+3. **Comparison of Actual vs. Predicted Prices**
+   - Observed minor deviations between actual and predicted values, suggesting the model has good prediction alignment.
+   - The table below illustrates the comparison between actual and predicted `MEDV` values for a sample of test data.
+
+| Index | Actual Values | Predicted Values |
+|-------|---------------|------------------|
+| 0     | 20.3          | 22.000          |
+| 1     | 32.7          | 30.228          |
+| 2     | 8.5           | 15.459          |
+| 3     | 29.8          | 31.425          |
+| 4     | 23.4          | 25.080          |
+| 5     | 12.0          | 11.334          |
+| 6     | 21.4          | 19.730          |
+| 7     | 22.2          | 20.567          |
+| 8     | 18.2          | 19.111          |
+| 9     | 20.5          | 20.493          |
+
+4. **Visual Representation of Predictions**
+   - **Scatter Plot**:
+     - A scatter plot of actual vs. predicted `MEDV` values highlights that most points are close to the line of perfect prediction, indicating the model is performing well.
+   - **Residual Plot**:
+     - Residuals (errors) plot shows a near-random distribution around zero, which suggests minimal bias and variance in the model’s predictions.
 
 ### Reasons why Random Forest and XGBoost often perform better than Linear Regression for the Boston housing dataset:
 
