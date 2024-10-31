@@ -377,6 +377,45 @@
  </div>
 ---
 
+# Discussion of Regression Analysis Results
+
+## 1. Reflection on Results
+- **Linear Regression**: 
+    - The linear regression model achieved a **Mean Squared Error (MSE) of 8.1495**, suggesting a generally accurate fit. However, the presence of some prediction errors, possibly due to data noise or underlying non-linear relationships, indicates room for improvement.
+    - An **R-squared value of 0.8284** reveals that the model explains 82.8% of the variance in housing prices, which indicates that it captures most key relationships in the data. 
+    - The **Adjusted R-squared value of 0.8018** supports that most predictors are relevant to the target variable, **Median House Value (MEDV)**, by showing only a slight reduction from the R-squared value.
+    - **Feature Impact Analysis** revealed that features like **Crime Rate (CRIM)** and **Nitric Oxide Concentration (NOX)** negatively impact housing prices, while features such as the **Average Number of Rooms (RM)** and **Accessibility to Highways (RAD)** positively influence prices.
+
+- **Logistic Regression**:
+    - The logistic regression model achieved a **classification accuracy of around 82%**, effectively distinguishing between diabetic and non-diabetic individuals.
+    - **Feature Coefficients Analysis** showed that **Glucose Level** and **Body Mass Index (BMI)** have strong positive coefficients, indicating that higher levels of these features increase the likelihood of diabetes. Other features, such as **Age** and **Insulin Levels**, also significantly impact diabetes risk.
+
+## 2. Comparison of the Two Regression Methods
+- **Purpose of Each Model**:
+    - **Linear Regression** is used to predict a continuous outcome (housing prices). It aims to find a straight-line relationship between the predictor variables and the target variable, so that the model's predictions closely match the actual values.
+    - **Logistic Regression** is used for classification tasks, predicting a binary outcome (diabetic or non-diabetic). Instead of finding a line, logistic regression produces an "S-shaped" curve that estimates the probability of each class (in this case, the probability of being diabetic).
+
+- **Model Performance**:
+    - The **MSE and R-squared** in the linear regression model demonstrate how well the model predicts precise values of housing prices, while **accuracy, precision, and recall** in the logistic regression model measure how well it classifies individuals as diabetic or non-diabetic.
+    - Linear regression results show a relatively strong fit to the data, while logistic regression’s accuracy of 82% suggests it is fairly effective for classification.
+
+- **Feature Impact**:
+    - Both models analyze the importance of features by assigning coefficients, but these coefficients reflect different outcomes. In linear regression, a positive coefficient indicates that as a feature value increases, the target value (housing price) increases as well. In logistic regression, a positive coefficient indicates that as a feature value increases, the probability of being diabetic also increases.
+
+## 3. Limitations
+- **Linear Regression Limitations**:
+    - Linear regression assumes a **linear relationship** between the predictors and the target variable. If the true relationship is non-linear, as may be the case with housing prices, the model may not fully capture all the nuances, leading to residual errors.
+    - The **model is sensitive to outliers**, which can skew predictions and reduce accuracy, particularly when extreme values exist within the data.
+    - **Multicollinearity** among features (where predictors are correlated with each other) can also affect the reliability of coefficients, leading to instability in the model’s predictions.
+
+- **Logistic Regression Limitations**:
+    - Logistic regression assumes a **linear relationship between predictors and the log odds** of the outcome, which may oversimplify complex relationships between health metrics and diabetes risk.
+    - Similar to linear regression, **outliers** can affect model performance, and logistic regression may also be influenced by **imbalanced data**, where one outcome (e.g., diabetic or non-diabetic) is more prevalent. This can skew the model’s accuracy, as it may perform better on the more frequent class.
+    - Logistic regression does not naturally handle **non-linear relationships** and may benefit from additional data preprocessing or transformation if non-linear patterns exist in the data.
+
+Overall, while both models provide useful insights and relatively strong performance, limitations such as sensitivity to linear assumptions, outliers, and complex relationships could potentially impact their predictive power. Addressing these limitations through additional model adjustments or using more advanced algorithms could further improve predictive accuracy.
+
+
 ## **References**
 
 1. Pedregosa, F. et al. (2011). *Scikit-learn: Machine learning in Python*. [Link](https://scikit-learn.org/stable/index.html)
