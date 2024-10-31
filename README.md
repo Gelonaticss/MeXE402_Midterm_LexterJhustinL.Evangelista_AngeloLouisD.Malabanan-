@@ -72,56 +72,65 @@
 4. **Residual Analysis**:
    - Analyze residuals to evaluate accuracy and identify improvement areas.
 
-#### **Model's Ability to Predict (R² Value = 0.6688)**
 
-- **R² = 0.6688**: Model explains ~66.88% of the **variance in median home values**.
-  - **Prediction Comparison**:
-    - Example predictions show deviations, like:
-      - **Actual**: 23.6, **Predicted**: 28.99 (overestimation)
-      - **Actual**: 13.6, **Predicted**: 14.82 (close prediction)
+## Methodology
 
-#### **Cross-Validation Mean Squared Error (MSE = 24.2911)**
+1. **Importing Libraries and Loading Data**
+   - Imported necessary libraries, including `pandas`, `numpy`, `seaborn`, and `matplotlib` for data processing, visualization, and inline plotting.
+   - Loaded the dataset `clearboston.csv` into a DataFrame.
 
-- **MSE of 24.2911** suggests that, on average, the squared difference between predicted and actual home values is 24.2911 units squared.
+2. **Initial Data Exploration**
+   - Displayed the first five rows to understand the data structure.
+   - Checked for missing values in the dataset to ensure data completeness.
+   - Used `.info()` and `.describe()` to explore data types and summary statistics.
 
-#### **Interpreting Coefficients**
+3. **Identifying Key Observations in Data**
+   - Noted interesting patterns:
+     - `ZN` and `CHAS` columns showed minimal variability, indicating potential limited predictive value.
+     - `MEDV` values above 50 were capped, highlighting the need to handle this censored data.
+   - Plotted boxplots to visualize outliers and noted columns like `CRIM`, `ZN`, `RM`, and `B` had high outlier percentages.
 
-- Positive coefficients mean that **increases in the feature value** are associated with **higher predicted home values**.
-- Negative coefficients mean that **increases in the feature value** lead to **lower predicted home values**.
+4. **Outlier Analysis and Removal**
+   - Calculated and printed the percentage of outliers in each column.
+   - Removed rows where `MEDV` was at the cap (≥50.0) for improved prediction accuracy.
 
-## **Methodology**
+5. **Distribution Analysis**
+   - Visualized each feature’s distribution to assess skewness:
+     - Noted that `CRIM`, `ZN`, and `B` were highly skewed, indicating possible need for transformation.
+     - Observed `MEDV` and other features had near-normal or bimodal distributions.
 
-1. **Importing Libraries**:
-   - **pandas, numpy**: Data handling.
-   - **matplotlib, seaborn**: Data visualization.
-   - **scikit-learn**: Machine learning library for data splitting, scaling, modeling, and evaluation.
+6. **Correlation Analysis**
+   - Used a heatmap to examine feature correlations.
+   - Selected features with correlation scores > 0.5 for `MEDV` as strong predictors, such as `LSTAT`, `INDUS`, `NOX`, `PTRATIO`, and `RM`.
 
-2. **Loading Dataset**:
-   - Verify data integrity.
-   
-3. **Separating Features (X) and Target (y)**:
-   - Define **X** (features) and **y** (target).
+7. **Feature Transformation and Scaling**
+   - Applied `MinMaxScaler` to normalize predictor variables and visualized selected predictors against `MEDV`.
+   - Performed log transformations on skewed features to reduce skewness and improve linearity.
 
-4. **Data Split**:
-   - **80% Training**, **20% Testing**.
+8. **Data Splitting**
+   - Defined features (`X`) and target variable (`y`), with `MEDV` as the dependent variable.
+   - Split data into training and testing sets (80% train, 20% test) to enable model training and evaluation.
 
-5. **Standardization**:
-   - Use **StandardScaler** to normalize feature values.
+9. **Feature Scaling for Model Training**
+   - Scaled `X_train` and `X_test` data using `StandardScaler` for optimal model performance in the regression model.
 
-6. **Model Training**:
-   - Fit **Linear Regression** model to training data.
+10. **Model Training**
+    - Initialized and trained a `LinearRegression` model on the scaled training data using `model.fit()`.
 
-7. **Prediction and Evaluation**:
-   - Assess using **Mean Squared Error (MSE)** and **R-squared (R²)**.
+11. **Prediction and Cross-Validation**
+    - Used the trained model to predict `MEDV` on test data.
+    - Calculated mean squared error (MSE) as a cross-validation metric.
 
-8. **Residual Analysis**:
-   - Check residuals for prediction accuracy and potential model improvements.
+12. **Model Evaluation Metrics**
+    - Calculated `R-squared` and `Adjusted R-squared` values to assess model performance.
+    - Printed the model’s coefficients and intercept to understand feature importance.
 
-9. **Visualization**:
-   - Plot *Actual vs. Predicted values* and *Residuals*.
+13. **Comparison of Actual vs. Predicted Values**
+    - Created a DataFrame to compare actual `MEDV` values with predicted values and displayed the first ten rows.
 
-10. **Prediction on New Data**:
-   - Use the trained model on new inputs for home value prediction.
+14. **Visualizing Model Performance**
+    - **Scatter Plot**: Compared actual vs. predicted values with a perfect prediction line to evaluate model accuracy visually.
+    - **Residual Plot**: Plotted residuals (errors) against predictions to check for random distribution around zero, indicating model fit quality.
 
 ### Reasons why Random Forest and XGBoost often perform better than Linear Regression for the Boston housing dataset:
 
