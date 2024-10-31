@@ -208,7 +208,16 @@
 
 ## **Introduction to Logistic Regression**
 
-- **Logistic regression** is used for **binary classification**, predicting probabilities of **categorical outcomes**.
+### **What is Logistic Regression**
+
+- **Logistic regression** is a popular algorithm in *supervised machine learning* primarily used for **classification tasks**.
+- Models the probability that a given input belongs to a particular **class or category**.
+- Useful when the **dependent variable** is **binary** (e.g., 0 or 1, Yes or No, True or False).
+- The algorithm estimates the **likelihood** of an event happening by fitting data to a **logistic function** (also called a sigmoid function).
+- Extends to **multiclass classification** through methods like *One-vs-Rest (OvR)* or *Softmax Regression*.
+- Commonly applied in fields like **medicine** (e.g., disease prediction), **finance** (e.g., loan approval), and **marketing** (e.g., customer churn prediction).
+- In logistic regression, instead of predicting exact values, the model predicts **probabilities** and maps them to classes based on a **decision threshold** (usually 0.5).
+
 
 ## **Dataset for Logistic Regression (Pima Indian Diabetes)**
 
