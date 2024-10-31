@@ -342,7 +342,7 @@
 19. **Calculating the Recall**:
     - Indicating how effectively the model identifies positive cases from the actual positives.
 
-## **Interpretation**
+## **Summary of Findings**
 **1.  Model's Ability to Classify**
  - **Classification Performance:** The logistic regression model is used to classify individuals as diabetic or non-diabetic based on various health metrics. The effectiveness of this model can be assessed through several metrics:
   - **Accuracy:** An accuracy score around 82% indicates that the model is reasonably effective in distinguishing between diabetic and non-diabetic individuals.
