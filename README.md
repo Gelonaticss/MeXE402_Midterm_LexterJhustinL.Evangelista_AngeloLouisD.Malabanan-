@@ -190,6 +190,10 @@
    - **Scatter Plot of Actual vs. Predicted Values**:
      - Points closely following the red diagonal line (indicating perfect prediction) show high prediction accuracy.
      - Deviation from the line suggests areas where the model could improve, such as capturing non-linear relationships or additional predictors.
+    
+   - **Residual Plot**:
+     - The residual plot shows the distribution of errors (differences between actual and predicted values).
+     - A random, symmetric distribution around zero suggests that the model has low bias, meaning it performs consistently across different values of `MEDV`
 
 ### Reasons why Random Forest and XGBoost often perform better than Linear Regression for the Boston housing dataset:
 
