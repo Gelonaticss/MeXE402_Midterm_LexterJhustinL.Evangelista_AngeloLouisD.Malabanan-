@@ -197,6 +197,7 @@
   ![ScatterPlot](https://github.com/user-attachments/assets/1f994071-4f1e-46a7-a4df-30d5683de8ab)
     
 </div>
+
    - **Residual Plot**:
      - The residual plot shows the distribution of errors (differences between actual and predicted values).
      - A random, symmetric distribution around zero suggests that the model has low bias, meaning it performs consistently across different values of `MEDV`
