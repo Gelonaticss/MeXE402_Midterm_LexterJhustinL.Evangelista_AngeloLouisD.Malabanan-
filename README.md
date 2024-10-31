@@ -1,6 +1,6 @@
 # Midterm Project for Elective 2
 
-## **Introduction**
+## **Linear Regression**
 
 ### **Overview of Linear Regression**
 
