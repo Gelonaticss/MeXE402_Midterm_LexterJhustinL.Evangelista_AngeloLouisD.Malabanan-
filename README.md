@@ -41,6 +41,25 @@
   - **B**: *Racial diversity measure*
   - **LSTAT**: *Percentage of lower-status residents*
   - **MEDV**: *Median home value* - the target variable for prediction.
+ 
+## Why `MEDV` Should be the Dependent Variable
+- `MEDV` represents the median home price, which is typically the main target for prediction in real estate datasets.
+- Predicting `MEDV` can provide insights into housing market trends, affordability, and property valuations in Boston’s suburbs.
+- Most features in this dataset (e.g., crime rate, number of rooms, accessibility to highways) influence home values, making `MEDV` an appropriate target for regression analysis.
+
+## Data Type of `MEDV`
+- `MEDV` is **continuous**, as it represents home prices, which can take a range of numerical values, not limited to categories or fixed intervals.
+
+## Appropriateness for Linear Regression
+- Since `MEDV` is a continuous variable, it is suitable for linear regression, which predicts continuous outcomes.
+- Linear regression assumes a linear relationship between the target and predictor variables. This can help model how various factors like room count or crime rate contribute to home price fluctuations.
+
+## Initial Observations of the Dataset
+- **Potential Non-Linear Relationships:** Some features (e.g., crime rate) may have a non-linear relationship with `MEDV`, which might affect linear regression's performance.
+- **Outliers in `MEDV`:** The dataset may contain outliers in home prices, which could skew predictions and reduce model accuracy.
+- **Feature Multicollinearity:** There might be correlations among features (e.g., `NOX` and `INDUS`), which could introduce multicollinearity issues.
+- **Skewed Distributions:** Certain variables may have skewed distributions, potentially influencing regression results and suggesting the need for feature transformation or regularization.
+
 
 ## **Project Objectives**
 
