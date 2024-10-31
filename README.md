@@ -148,7 +148,7 @@
 2. **Feature Impact Analysis (Model Coefficients)**
    - Coefficients represent the impact of each feature on `MEDV`. A positive coefficient implies that an increase in the feature value will increase `MEDV`, while a negative coefficient implies the opposite.
    - The table below details each feature’s coefficient:
-
+<div align="center">
 | Feature        | Coefficient | Interpretation                                                                                     |
 |----------------|-------------|-----------------------------------------------------------------------------------------------------|
 | **CRIM**       | -0.8754     | Higher crime rates are associated with lower housing prices, possibly due to reduced neighborhood desirability. |
@@ -165,10 +165,11 @@
 | **B**          | 0.8237      | A higher proportion of African American residents slightly increases housing prices.              |
 | **LSTAT**      | -2.5557     | Higher percentage of lower-status individuals significantly decreases prices, reflecting socioeconomic impact. |
 | **Intercept**  | 21.6681     | Baseline housing price when all predictors are zero; not directly interpretable due to lack of practical context. |
+</div>
 
 3. **Comparison of Actual vs. Predicted Prices**
    - The table below provides a comparison of actual and predicted `MEDV` values, showing the model’s accuracy in specific instances.
-
+<div align="center">
 | Index | Actual Values | Predicted Values |
 |-------|---------------|------------------|
 | 0     | 20.3          | 22.000          |
@@ -181,7 +182,7 @@
 | 7     | 22.2          | 20.567          |
 | 8     | 18.2          | 19.111          |
 | 9     | 20.5          | 20.493          |
-
+</div>
    - **Interpretation**:
      - Most predicted values closely align with actual values, suggesting that the model captures important relationships in the data.
      - Some discrepancies exist (e.g., index 2), highlighting that certain data points may have additional influencing factors or contain noise.
@@ -190,10 +191,15 @@
    - **Scatter Plot of Actual vs. Predicted Values**:
      - Points closely following the red diagonal line (indicating perfect prediction) show high prediction accuracy.
      - Deviation from the line suggests areas where the model could improve, such as capturing non-linear relationships or additional predictors.
-    
+ <div align="center">
+    ![ScatterPlot](https://github.com/user-attachments/assets/1f994071-4f1e-46a7-a4df-30d5683de8ab)
+</div>
    - **Residual Plot**:
      - The residual plot shows the distribution of errors (differences between actual and predicted values).
      - A random, symmetric distribution around zero suggests that the model has low bias, meaning it performs consistently across different values of `MEDV`
+<div align="center">     
+       ![Residual Plot](https://github.com/user-attachments/assets/5f25354e-f559-4af9-8d4f-f94ea184a5a0)
+</div>
 
 ### Reasons why Random Forest and XGBoost often perform better than Linear Regression for the Boston housing dataset:
 
