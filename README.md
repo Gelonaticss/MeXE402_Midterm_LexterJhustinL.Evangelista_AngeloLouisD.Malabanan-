@@ -359,8 +359,19 @@
   - **BMI:** Important for assessing obesity-related risks.
   - **Age:** Typically shows a positive correlation, with older individuals at greater risk.
   - **Insulin Levels and Blood Pressure:** These features also contribute significantly to diabetes prediction, indicating the model's capacity to incorporate a range of health metrics.
-    
 
+**3.Countplot Visualization**:
+ <div align="center">
+   
+![Countplot logi](https://github.com/user-attachments/assets/994e8ef6-7728-4f28-a742-3f8ffb470be4)
+
+ </div>
+**4.Confusion Matrix**:
+ <div align="center">
+   
+![Confu mat logi](https://github.com/user-attachments/assets/55b981d4-c72b-4ca3-b34f-c48f557a409c)
+
+ </div>
 ---
 
 ## **References**
