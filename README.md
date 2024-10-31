@@ -1,8 +1,8 @@
 # Midterm Project for Elective 2
 
-## **Introduction**
+## **Linear Regression**
 
-### **Overview of Linear Regression**
+### **What is Linear Regression**
 
 - **Linear regression** is a fundamental algorithm in *supervised machine learning*.
 - Used to model relationships between a **dependent variable** (*target*) and one or more **independent variables** (*features*).
@@ -41,6 +41,25 @@
   - **B**: *Racial diversity measure*
   - **LSTAT**: *Percentage of lower-status residents*
   - **MEDV**: *Median home value* - the target variable for prediction.
+ 
+## Why `MEDV` Should be the Dependent Variable
+- `MEDV` represents the median home price, which is typically the main target for prediction in real estate datasets.
+- Predicting `MEDV` can provide insights into housing market trends, affordability, and property valuations in Boston’s suburbs.
+- Most features in this dataset (e.g., crime rate, number of rooms, accessibility to highways) influence home values, making `MEDV` an appropriate target for regression analysis.
+
+## Data Type of `MEDV`
+- `MEDV` is **continuous**, as it represents home prices, which can take a range of numerical values, not limited to categories or fixed intervals.
+
+## Appropriateness for Linear Regression
+- Since `MEDV` is a continuous variable, it is suitable for linear regression, which predicts continuous outcomes.
+- Linear regression assumes a linear relationship between the target and predictor variables. This can help model how various factors like room count or crime rate contribute to home price fluctuations.
+
+## Initial Observations of the Dataset
+- **Potential Non-Linear Relationships:** Some features (e.g., crime rate) may have a non-linear relationship with `MEDV`, which might affect linear regression's performance.
+- **Outliers in `MEDV`:** The dataset may contain outliers in home prices, which could skew predictions and reduce model accuracy.
+- **Feature Multicollinearity:** There might be correlations among features (e.g., `NOX` and `INDUS`), which could introduce multicollinearity issues.
+- **Skewed Distributions:** Certain variables may have skewed distributions, potentially influencing regression results and suggesting the need for feature transformation or regularization.
+
 
 ## **Project Objectives**
 
@@ -53,56 +72,141 @@
 4. **Residual Analysis**:
    - Analyze residuals to evaluate accuracy and identify improvement areas.
 
-#### **Model's Ability to Predict (R² Value = 0.6688)**
 
-- **R² = 0.6688**: Model explains ~66.88% of the **variance in median home values**.
-  - **Prediction Comparison**:
-    - Example predictions show deviations, like:
-      - **Actual**: 23.6, **Predicted**: 28.99 (overestimation)
-      - **Actual**: 13.6, **Predicted**: 14.82 (close prediction)
+## Methodology
 
-#### **Cross-Validation Mean Squared Error (MSE = 24.2911)**
+1. **Importing Libraries and Loading Data**
+   - Imported necessary libraries, including `pandas`, `numpy`, `seaborn`, and `matplotlib` for data processing, visualization, and inline plotting.
+   - Loaded the dataset `clearboston.csv` into a DataFrame.
 
-- **MSE of 24.2911** suggests that, on average, the squared difference between predicted and actual home values is 24.2911 units squared.
+2. **Initial Data Exploration**
+   - Displayed the first five rows to understand the data structure.
+   - Checked for missing values in the dataset to ensure data completeness.
+   - Used `.info()` and `.describe()` to explore data types and summary statistics.
 
-#### **Interpreting Coefficients**
+3. **Identifying Key Observations in Data**
+   - Noted interesting patterns:
+     - `ZN` and `CHAS` columns showed minimal variability, indicating potential limited predictive value.
+     - `MEDV` values above 50 were capped, highlighting the need to handle this censored data.
+   - Plotted boxplots to visualize outliers and noted columns like `CRIM`, `ZN`, `RM`, and `B` had high outlier percentages.
 
-- Positive coefficients mean that **increases in the feature value** are associated with **higher predicted home values**.
-- Negative coefficients mean that **increases in the feature value** lead to **lower predicted home values**.
+4. **Outlier Analysis and Removal**
+   - Calculated and printed the percentage of outliers in each column.
+   - Removed rows where `MEDV` was at the cap (≥50.0) for improved prediction accuracy.
 
-## **Methodology**
+5. **Distribution Analysis**
+   - Visualized each feature’s distribution to assess skewness:
+     - Noted that `CRIM`, `ZN`, and `B` were highly skewed, indicating possible need for transformation.
+     - Observed `MEDV` and other features had near-normal or bimodal distributions.
 
-1. **Importing Libraries**:
-   - **pandas, numpy**: Data handling.
-   - **matplotlib, seaborn**: Data visualization.
-   - **scikit-learn**: Machine learning library for data splitting, scaling, modeling, and evaluation.
+6. **Correlation Analysis**
+   - Used a heatmap to examine feature correlations.
+   - Selected features with correlation scores > 0.5 for `MEDV` as strong predictors, such as `LSTAT`, `INDUS`, `NOX`, `PTRATIO`, and `RM`.
 
-2. **Loading Dataset**:
-   - Verify data integrity.
+7. **Feature Transformation and Scaling**
+   - Applied `MinMaxScaler` to normalize predictor variables and visualized selected predictors against `MEDV`.
+   - Performed log transformations on skewed features to reduce skewness and improve linearity.
+
+8. **Data Splitting**
+   - Defined features (`X`) and target variable (`y`), with `MEDV` as the dependent variable.
+   - Split data into training and testing sets (80% train, 20% test) to enable model training and evaluation.
+
+9. **Feature Scaling for Model Training**
+   - Scaled `X_train` and `X_test` data using `StandardScaler` for optimal model performance in the regression model.
+
+10. **Model Training**
+    - Initialized and trained a `LinearRegression` model on the scaled training data using `model.fit()`.
+
+11. **Prediction and Cross-Validation**
+    - Used the trained model to predict `MEDV` on test data.
+    - Calculated mean squared error (MSE) as a cross-validation metric.
+
+12. **Model Evaluation Metrics**
+    - Calculated `R-squared` and `Adjusted R-squared` values to assess model performance.
+    - Printed the model’s coefficients and intercept to understand feature importance.
+
+13. **Comparison of Actual vs. Predicted Values**
+    - Created a DataFrame to compare actual `MEDV` values with predicted values and displayed the first ten rows.
+
+14. **Visualizing Model Performance**
+    - **Scatter Plot**: Compared actual vs. predicted values with a perfect prediction line to evaluate model accuracy visually.
+    - **Residual Plot**: Plotted residuals (errors) against predictions to check for random distribution around zero, indicating model fit quality.
    
-3. **Separating Features (X) and Target (y)**:
-   - Define **X** (features) and **y** (target).
+## Summary of Findings
 
-4. **Data Split**:
-   - **80% Training**, **20% Testing**.
+1. **Model Performance Metrics**
+   - **Cross-Validation Mean Squared Error (MSE)**: 8.1495
+     - This value quantifies the average squared differences between the predicted and actual `MEDV` values. The lower the MSE, the better the model fits the data.
+     - Here, an MSE of 8.1495 suggests that the model is relatively accurate, though there is still some prediction error, potentially due to noise or non-linear relationships in the data.
+   - **R-squared (R²)**: 0.8284
+     - The R² value shows the proportion of variance in `MEDV` that is explained by the model’s features.
+     - An R² of 0.8284 means that about 82.8% of the variance in housing prices is captured by this model, indicating a strong fit.
+   - **Adjusted R-squared**: 0.8018
+     - The Adjusted R² compensates for the number of predictors, adjusting R² downward if unnecessary variables are included.
+     - Here, an adjusted R² of 0.8018 suggests that most predictors are relevant, as there is only a slight reduction from the standard R².
 
-5. **Standardization**:
-   - Use **StandardScaler** to normalize feature values.
+2. **Feature Impact Analysis (Model Coefficients)**
+   - Coefficients represent the impact of each feature on `MEDV`. A positive coefficient implies that an increase in the feature value will increase `MEDV`, while a negative coefficient implies the opposite.
+   - The table below details each feature’s coefficient:
 
-6. **Model Training**:
-   - Fit **Linear Regression** model to training data.
+| Feature        | Coefficient | Interpretation                                                                                     |
+|----------------|-------------|-----------------------------------------------------------------------------------------------------|
+| **CRIM**       | -0.8754     | Higher crime rates are associated with lower housing prices, possibly due to reduced neighborhood desirability. |
+| **ZN**         | 0.7944      | Residential land zoning for larger lots positively affects housing prices, suggesting exclusivity adds value.  |
+| **INDUS**      | -0.1957     | Higher industrial activity slightly decreases housing prices, potentially due to increased pollution or noise. |
+| **CHAS**       | 0.0576      | Proximity to the Charles River has a slight positive impact on housing prices, adding scenic or recreational value. |
+| **NOX**        | -1.6237     | Nitric oxide concentration, indicating pollution, negatively impacts housing prices significantly. |
+| **RM**         | 2.5128      | Average number of rooms per dwelling has the strongest positive impact, showing that larger homes are valued higher. |
+| **AGE**        | -0.5803     | Older properties are slightly less valuable, potentially due to wear or less modern features. |
+| **DIS**        | -2.5656     | Greater distance from employment centers decreases prices, indicating a preference for proximity to work. |
+| **RAD**        | 2.4216      | Accessibility to highways slightly increases prices, suggesting improved commute convenience. |
+| **TAX**        | -2.4339     | Higher property tax rates are associated with lower prices, as it increases the cost of owning property. |
+| **PTRATIO**    | -1.9463     | Higher student-teacher ratios negatively impact housing prices, likely reflecting school quality perceptions. |
+| **B**          | 0.8237      | A higher proportion of African American residents slightly increases housing prices.              |
+| **LSTAT**      | -2.5557     | Higher percentage of lower-status individuals significantly decreases prices, reflecting socioeconomic impact. |
+| **Intercept**  | 21.6681     | Baseline housing price when all predictors are zero; not directly interpretable due to lack of practical context. |
 
-7. **Prediction and Evaluation**:
-   - Assess using **Mean Squared Error (MSE)** and **R-squared (R²)**.
 
-8. **Residual Analysis**:
-   - Check residuals for prediction accuracy and potential model improvements.
+3. **Comparison of Actual vs. Predicted Prices**
+   - The table below provides a comparison of actual and predicted `MEDV` values, showing the model’s accuracy in specific instances.
 
-9. **Visualization**:
-   - Plot *Actual vs. Predicted values* and *Residuals*.
+| Index | Actual Values | Predicted Values |
+|-------|---------------|------------------|
+| 0     | 20.3          | 22.000          |
+| 1     | 32.7          | 30.228          |
+| 2     | 8.5           | 15.459          |
+| 3     | 29.8          | 31.425          |
+| 4     | 23.4          | 25.080          |
+| 5     | 12.0          | 11.334          |
+| 6     | 21.4          | 19.730          |
+| 7     | 22.2          | 20.567          |
+| 8     | 18.2          | 19.111          |
+| 9     | 20.5          | 20.493          |
 
-10. **Prediction on New Data**:
-   - Use the trained model on new inputs for home value prediction.
+   - **Interpretation**:
+     - Most predicted values closely align with actual values, suggesting that the model captures important relationships in the data.
+     - Some discrepancies exist (e.g., index 2), highlighting that certain data points may have additional influencing factors or contain noise.
+
+4. **Visual Analysis of Predictions**
+   - **Scatter Plot of Actual vs. Predicted Values**:
+     - Points closely following the red diagonal line (indicating perfect prediction) show high prediction accuracy.
+     - Deviation from the line suggests areas where the model could improve, such as capturing non-linear relationships or additional predictors.
+     
+ <div align="center">
+   
+  ![ScatterPlot](https://github.com/user-attachments/assets/1f994071-4f1e-46a7-a4df-30d5683de8ab)
+    
+</div>
+
+   - **Residual Plot**:
+     - The residual plot shows the distribution of errors (differences between actual and predicted values).
+     - A random, symmetric distribution around zero suggests that the model has low bias, meaning it performs consistently across different values of `MEDV`
+     
+<div align="center">    
+  
+![Residual Plot](https://github.com/user-attachments/assets/5f25354e-f559-4af9-8d4f-f94ea184a5a0)
+
+</div>
 
 ### Reasons why Random Forest and XGBoost often perform better than Linear Regression for the Boston housing dataset:
 
@@ -121,7 +225,16 @@
 
 ## **Introduction to Logistic Regression**
 
-- **Logistic regression** is used for **binary classification**, predicting probabilities of **categorical outcomes**.
+### **What is Logistic Regression**
+
+- **Logistic regression** is a popular algorithm in *supervised machine learning* primarily used for **classification tasks**.
+- Models the probability that a given input belongs to a particular **class or category**.
+- Useful when the **dependent variable** is **binary** (e.g., 0 or 1, Yes or No, True or False).
+- The algorithm estimates the **likelihood** of an event happening by fitting data to a **logistic function** (also called a sigmoid function).
+- Extends to **multiclass classification** through methods like *One-vs-Rest (OvR)* or *Softmax Regression*.
+- Commonly applied in fields like **medicine** (e.g., disease prediction), **finance** (e.g., loan approval), and **marketing** (e.g., customer churn prediction).
+- In logistic regression, instead of predicting exact values, the model predicts **probabilities** and maps them to classes based on a **decision threshold** (usually 0.5).
+
 
 ## **Dataset for Logistic Regression (Pima Indian Diabetes)**
 
@@ -136,6 +249,31 @@
   - **Diabetes Pedigree Function**: *Genetic predisposition score.*
   - **Age**: *Patient age.*
   - **Outcome**: *Diabetes presence (1) or absence (0).*
+ 
+## Why "Outcome" (Presence of Diabetes) should be the Dependent Variable:
+  - The "Outcome" column represents whether or not an individual has diabetes, coded as:
+    - `1` for diabetic
+    - `0` for non-diabetic
+  - Since the goal of the analysis is to predict diabetes presence based on other factors, "Outcome" naturally serves as the dependent variable.
+
+## Data Type of the "Outcome" Variable:**
+  - **Categorical**
+  - The variable "Outcome" is binary, representing two distinct categories (diabetic and non-diabetic).
+
+## Appropriateness for Logistic Regression
+  - Logistic regression is well-suited for binary outcomes, as it estimates the probability of an observation belonging to one of two categories.
+  - The logistic function constrains output to a range between `0` and `1`, making it ideal for probability-based classification.
+
+## Initial Observations of the Dataset:
+  - **Potential Issues:**
+    - Several columns (e.g., `Insulin` and `SkinThickness`) have zeros where actual values should be present, possibly indicating missing data.
+    - Zero values for attributes like `BloodPressure` and `BMI` may also indicate data entry issues, as these values are biologically implausible.
+  - **Patterns:**
+    - Columns such as `Pregnancies`, `BMI`, `Age`, and `Glucose` could show a correlation with the "Outcome" variable, which logistic regression can help identify.
+  - **Size and Balance:**
+    - The dataset contains 768 entries, which is moderately sized for logistic regression analysis.
+    - It's useful to further examine the balance between classes (i.e., counts of `0` vs. `1` in "Outcome") for potential imbalance, which could affect model performance.
+
 
 ## **Project Objectives for Logistic Regression**
 
@@ -204,7 +342,7 @@
 19. **Calculating the Recall**:
     - Indicating how effectively the model identifies positive cases from the actual positives.
 
-## **Interpretation**
+## **Summary of Findings**
 **1.  Model's Ability to Classify**
  - **Classification Performance:** The logistic regression model is used to classify individuals as diabetic or non-diabetic based on various health metrics. The effectiveness of this model can be assessed through several metrics:
   - **Accuracy:** An accuracy score around 82% indicates that the model is reasonably effective in distinguishing between diabetic and non-diabetic individuals.
@@ -222,9 +360,61 @@
   - **BMI:** Important for assessing obesity-related risks.
   - **Age:** Typically shows a positive correlation, with older individuals at greater risk.
   - **Insulin Levels and Blood Pressure:** These features also contribute significantly to diabetes prediction, indicating the model's capacity to incorporate a range of health metrics.
-    
 
+**3. Countplot Visualization**:
+ <div align="center">
+   
+![Countplot logi](https://github.com/user-attachments/assets/994e8ef6-7728-4f28-a742-3f8ffb470be4)
+
+ </div>
+ 
+**4. Confusion Matrix**:
+
+ <div align="center">
+   
+![Confu mat logi](https://github.com/user-attachments/assets/55b981d4-c72b-4ca3-b34f-c48f557a409c)
+
+ </div>
 ---
+
+# Discussion of Regression Analysis Results
+
+## 1. Reflection on Results
+- **Linear Regression**: 
+    - The linear regression model achieved a **Mean Squared Error (MSE) of 8.1495**, suggesting a generally accurate fit. However, the presence of some prediction errors, possibly due to data noise or underlying non-linear relationships, indicates room for improvement.
+    - An **R-squared value of 0.8284** reveals that the model explains 82.8% of the variance in housing prices, which indicates that it captures most key relationships in the data. 
+    - The **Adjusted R-squared value of 0.8018** supports that most predictors are relevant to the target variable, **Median House Value (MEDV)**, by showing only a slight reduction from the R-squared value.
+    - **Feature Impact Analysis** revealed that features like **Crime Rate (CRIM)** and **Nitric Oxide Concentration (NOX)** negatively impact housing prices, while features such as the **Average Number of Rooms (RM)** and **Accessibility to Highways (RAD)** positively influence prices.
+
+- **Logistic Regression**:
+    - The logistic regression model achieved a **classification accuracy of around 82%**, effectively distinguishing between diabetic and non-diabetic individuals.
+    - **Feature Coefficients Analysis** showed that **Glucose Level** and **Body Mass Index (BMI)** have strong positive coefficients, indicating that higher levels of these features increase the likelihood of diabetes. Other features, such as **Age** and **Insulin Levels**, also significantly impact diabetes risk.
+
+## 2. Comparison of the Two Regression Methods
+- **Purpose of Each Model**:
+    - **Linear Regression** is used to predict a continuous outcome (housing prices). It aims to find a straight-line relationship between the predictor variables and the target variable, so that the model's predictions closely match the actual values.
+    - **Logistic Regression** is used for classification tasks, predicting a binary outcome (diabetic or non-diabetic). Instead of finding a line, logistic regression produces an "S-shaped" curve that estimates the probability of each class (in this case, the probability of being diabetic).
+
+- **Model Performance**:
+    - The **MSE and R-squared** in the linear regression model demonstrate how well the model predicts precise values of housing prices, while **accuracy, precision, and recall** in the logistic regression model measure how well it classifies individuals as diabetic or non-diabetic.
+    - Linear regression results show a relatively strong fit to the data, while logistic regression’s accuracy of 82% suggests it is fairly effective for classification.
+
+- **Feature Impact**:
+    - Both models analyze the importance of features by assigning coefficients, but these coefficients reflect different outcomes. In linear regression, a positive coefficient indicates that as a feature value increases, the target value (housing price) increases as well. In logistic regression, a positive coefficient indicates that as a feature value increases, the probability of being diabetic also increases.
+
+## 3. Limitations
+- **Linear Regression Limitations**:
+    - Linear regression assumes a **linear relationship** between the predictors and the target variable. If the true relationship is non-linear, as may be the case with housing prices, the model may not fully capture all the nuances, leading to residual errors.
+    - The **model is sensitive to outliers**, which can skew predictions and reduce accuracy, particularly when extreme values exist within the data.
+    - **Multicollinearity** among features (where predictors are correlated with each other) can also affect the reliability of coefficients, leading to instability in the model’s predictions.
+
+- **Logistic Regression Limitations**:
+    - Logistic regression assumes a **linear relationship between predictors and the log odds** of the outcome, which may oversimplify complex relationships between health metrics and diabetes risk.
+    - Similar to linear regression, **outliers** can affect model performance, and logistic regression may also be influenced by **imbalanced data**, where one outcome (e.g., diabetic or non-diabetic) is more prevalent. This can skew the model’s accuracy, as it may perform better on the more frequent class.
+    - Logistic regression does not naturally handle **non-linear relationships** and may benefit from additional data preprocessing or transformation if non-linear patterns exist in the data.
+
+Overall, while both models provide useful insights and relatively strong performance, limitations such as sensitivity to linear assumptions, outliers, and complex relationships could potentially impact their predictive power. Addressing these limitations through additional model adjustments or using more advanced algorithms could further improve predictive accuracy.
+
 
 ## **References**
 
