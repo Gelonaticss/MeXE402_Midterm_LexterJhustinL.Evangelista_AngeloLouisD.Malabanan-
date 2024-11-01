@@ -1,6 +1,6 @@
 # Midterm Project for Elective 2
 
-# Project Objectives
+## Project Objectives
 
 1. **Understand the Dataset and Select Appropriate Variables**
    - Explore and analyze the assigned dataset to understand its structure and variables.
@@ -35,7 +35,7 @@
 
 ## **Linear Regression**
 
-### **What is Linear Regression**
+### **What is Linear Regression?**
 
 - **Linear regression** is a fundamental algorithm in *supervised machine learning*.
 - Used to model relationships between a **dependent variable** (*target*) and one or more **independent variables** (*features*).
@@ -55,7 +55,7 @@
   - Whether **property taxes** (*TAX*) and **pupil-teacher ratios** (*PTRATIO*) correlate with lower housing prices.
   - If socio-economic factors, such as **crime rate** (*CRIM*) or **percentage of lower-status residents** (*LSTAT*), explain fluctuations in real estate prices.
 
-## **Dataset Description**
+### **Dataset Description**
 
 - **Boston Housing Dataset** contains data from the 1970 Boston Standard Metropolitan Statistical Area (*SMSA*).
 - **Entries**: 505 towns/suburbs.
@@ -75,38 +75,26 @@
   - **LSTAT**: *Percentage of lower-status residents*
   - **MEDV**: *Median home value* - the target variable for prediction.
  
-## Why `MEDV` Should be the Dependent Variable
+### Why `MEDV` Should be the Dependent Variable
 - `MEDV` represents the median home price, which is typically the main target for prediction in real estate datasets.
 - Predicting `MEDV` can provide insights into housing market trends, affordability, and property valuations in Boston’s suburbs.
 - Most features in this dataset (e.g., crime rate, number of rooms, accessibility to highways) influence home values, making `MEDV` an appropriate target for regression analysis.
 
-## Data Type of `MEDV`
+### Data Type of `MEDV`
 - `MEDV` is **continuous**, as it represents home prices, which can take a range of numerical values, not limited to categories or fixed intervals.
 
-## Appropriateness for Linear Regression
+### Appropriateness for Linear Regression
 - Since `MEDV` is a continuous variable, it is suitable for linear regression, which predicts continuous outcomes.
 - Linear regression assumes a linear relationship between the target and predictor variables. This can help model how various factors like room count or crime rate contribute to home price fluctuations.
 
-## Initial Observations of the Dataset
+### Initial Observations of the Dataset
+
 - **Potential Non-Linear Relationships:** Some features (e.g., crime rate) may have a non-linear relationship with `MEDV`, which might affect linear regression's performance.
 - **Outliers in `MEDV`:** The dataset may contain outliers in home prices, which could skew predictions and reduce model accuracy.
 - **Feature Multicollinearity:** There might be correlations among features (e.g., `NOX` and `INDUS`), which could introduce multicollinearity issues.
 - **Skewed Distributions:** Certain variables may have skewed distributions, potentially influencing regression results and suggesting the need for feature transformation or regularization.
 
-
-## **Project Objectives**
-
-1. **Feature Impact on Housing Prices**:
-   - Identify which **features significantly impact** housing prices.
-2. **Model Building**:
-   - Build a regression model to predict **housing prices** using socio-economic factors.
-3. **Model Evaluation**:
-   - Evaluate using **R-squared** and **RMSE** to assess model performance.
-4. **Residual Analysis**:
-   - Analyze residuals to evaluate accuracy and identify improvement areas.
-
-
-## Methodology
+### Methodology
 
 1. **Importing Libraries and Loading Data**
    - Imported necessary libraries, including `pandas`, `numpy`, `seaborn`, and `matplotlib` for data processing, visualization, and inline plotting.
@@ -165,7 +153,7 @@
     - **Scatter Plot**: Compared actual vs. predicted values with a perfect prediction line to evaluate model accuracy visually.
     - **Residual Plot**: Plotted residuals (errors) against predictions to check for random distribution around zero, indicating model fit quality.
    
-## Summary of Findings
+### Summary of Findings
 
 1. **Model Performance Metrics**
    - **Cross-Validation Mean Squared Error (MSE)**: 8.1495
@@ -258,7 +246,7 @@
 
 ## **Introduction to Logistic Regression**
 
-### **What is Logistic Regression**
+### **What is Logistic Regression?**
 
 - **Logistic regression** is a popular algorithm in *supervised machine learning* primarily used for **classification tasks**.
 - Models the probability that a given input belongs to a particular **class or category**.
@@ -269,7 +257,7 @@
 - In logistic regression, instead of predicting exact values, the model predicts **probabilities** and maps them to classes based on a **decision threshold** (usually 0.5).
 
 
-## **Dataset for Logistic Regression (Pima Indian Diabetes)**
+### **Dataset for Logistic Regression (Pima Indian Diabetes)**
 
 - Used for **binary classification** tasks, like predicting diabetes.
 - **Features**:
@@ -283,21 +271,21 @@
   - **Age**: *Patient age.*
   - **Outcome**: *Diabetes presence (1) or absence (0).*
  
-## Why "Outcome" (Presence of Diabetes) should be the Dependent Variable:
+### Why "Outcome" (Presence of Diabetes) should be the Dependent Variable:
   - The "Outcome" column represents whether or not an individual has diabetes, coded as:
     - `1` for diabetic
     - `0` for non-diabetic
   - Since the goal of the analysis is to predict diabetes presence based on other factors, "Outcome" naturally serves as the dependent variable.
 
-## Data Type of the "Outcome" Variable:**
+### Data Type of the "Outcome" Variable:**
   - **Categorical**
   - The variable "Outcome" is binary, representing two distinct categories (diabetic and non-diabetic).
 
-## Appropriateness for Logistic Regression
+### Appropriateness for Logistic Regression
   - Logistic regression is well-suited for binary outcomes, as it estimates the probability of an observation belonging to one of two categories.
   - The logistic function constrains output to a range between `0` and `1`, making it ideal for probability-based classification.
 
-## Initial Observations of the Dataset:
+### Initial Observations of the Dataset:
   - **Potential Issues:**
     - Several columns (e.g., `Insulin` and `SkinThickness`) have zeros where actual values should be present, possibly indicating missing data.
     - Zero values for attributes like `BloodPressure` and `BMI` may also indicate data entry issues, as these values are biologically implausible.
@@ -308,31 +296,7 @@
     - It's useful to further examine the balance between classes (i.e., counts of `0` vs. `1` in "Outcome") for potential imbalance, which could affect model performance.
 
 
-## **Project Objectives for Logistic Regression**
-
-1. **Data Collection**:
-   - Prepare and preprocess the **Pima Indian diabetes dataset**.
-
-2. **Exploratory Data Analysis (EDA)**:
-   - Identify patterns, correlations, and key features.
-
-3. **Feature Selection**:
-   - Select relevant features for dimensionality reduction.
-
-4. **Model Development**:
-   - Develop a **logistic regression model** for diabetes prediction.
-
-5. **Model Evaluation**:
-   - Evaluate using metrics such as **accuracy, precision, recall,** and **F1 score**.
-
-6. **Result Interpretation**:
-   - Analyze coefficients to interpret influence on diabetes risk.
-
-7. **Reporting**:
-   - Summarize methodology, findings, and insights for stakeholders.
-
-
-## **Methodoloy**
+### **Methodology**
 
 1. **Importing Libraries**:
    - Imports essential libraries for data manipulation **(pandas)**, numerical operations **(numpy)**, and model evaluation.
@@ -375,7 +339,7 @@
 19. **Calculating the Recall**:
     - Indicating how effectively the model identifies positive cases from the actual positives.
 
-## **Summary of Findings**
+### **Summary of Findings**
 **1.  Model's Ability to Classify**
  - **Classification Performance:** The logistic regression model is used to classify individuals as diabetic or non-diabetic based on various health metrics. The effectiveness of this model can be assessed through several metrics:
   - **Accuracy:** An accuracy score around 82% indicates that the model is reasonably effective in distinguishing between diabetic and non-diabetic individuals.
@@ -410,9 +374,9 @@
  </div>
 ---
 
-# Discussion of Regression Analysis Results
+## Discussion of Regression Analysis Results
 
-## 1. Reflection on Results
+### 1. Reflection on Results
 - **Linear Regression**: 
     - The linear regression model achieved a **Mean Squared Error (MSE) of 8.1495**, suggesting a generally accurate fit. However, the presence of some prediction errors, possibly due to data noise or underlying non-linear relationships, indicates room for improvement.
     - An **R-squared value of 0.8284** reveals that the model explains 82.8% of the variance in housing prices, which indicates that it captures most key relationships in the data. 
