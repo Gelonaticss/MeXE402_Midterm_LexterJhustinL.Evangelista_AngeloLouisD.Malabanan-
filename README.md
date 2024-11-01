@@ -499,5 +499,5 @@ Overall, while both models provide useful insights and relatively strong perform
 9. Vincent Lugat. (2019) *Pima Indians Diabetes - EDA & Prediction* [Link](https://www.kaggle.com/code/vincentlugat/pima-indians-diabetes-eda-prediction-0-906)
 
 ## Group Members
-1. Evangelista, Lexter Jhustin (20-60481)
+1. Evangelista, Lexter Jhustin L. (20-60481)
 2. Malabanan, Angelo Louis D. (21-04184)
