@@ -437,6 +437,7 @@
 ![Countplot logi](https://github.com/user-attachments/assets/994e8ef6-7728-4f28-a742-3f8ffb470be4)
 
  </div>
+ 
  - **Interpretation:**
   - **No Diabetes:**
     - The count of **predicted cases** of "No Diabetes" is higher than the actual cases. This suggests that the model tends to classify individuals without diabetes slightly more often than observed in the actual data.
