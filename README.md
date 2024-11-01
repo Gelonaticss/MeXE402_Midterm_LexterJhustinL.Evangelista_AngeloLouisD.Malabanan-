@@ -1126,6 +1126,269 @@ plt.show()
 
 
 ## Code of Logistic Regression
+**Data Processing**
+
+**Import the Dataset**
+
+
+```python
+# Import necessary libraries for data manipulation, visualization, and analysis
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Load the dataset into a pandas DataFrame
+dataset = pd.read_csv('diabetes.csv')
+```
+
+```python
+# Display the first 10 rows of the dataset to understand its structure and initial values
+dataset.head(10)
+
+```
+
+
+```python
+# Display dataset information, including column data types and non-null counts
+dataset.info()
+```
+
+
+```python
+# Check for any missing values in each column of the dataset
+dataset.isnull().sum()
+```
+
+Checks for any missing values in the data.
+
+**Getting Inputs and Output**
+
+
+```python
+# Separate features (X) and target variable (y) from the dataset
+X = dataset.iloc[:, :-1].values  # Select all columns except the last one as features
+y = dataset.iloc[:, -1].values   # Select the last column as the target variable
+
+```
+
+
+```python
+# Display feature values (X)
+X
+```
+
+```python
+# Display target variable values (y)
+y
+```
+
+**Creating Training Set and the Test Set**
+
+
+```python
+# Import the train_test_split function to split the dataset into training and testing sets
+from sklearn.model_selection import train_test_split
+
+# Split the data, reserving 20% for testing and using 80% for training
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+
+# Set options to control how values are printed in numpy arrays (for readability)
+np.set_printoptions(suppress=True, precision=4)
+```
+
+The code splits a dataset into training and testing sets to evaluate a machine learning model's performance.
+
+```python
+# Display training feature set
+X_train
+```
+
+```python
+# Display testing feature set
+X_test
+```
+
+```python
+# Display training target set
+y_train
+```
+
+```python
+# Display testing target set
+y_test
+
+```
+
+
+```python
+# Standardize features by removing the mean and scaling to unit variance
+from sklearn.preprocessing import StandardScaler
+sc = StandardScaler()
+
+# Fit the scaler on training data and transform it
+X_train = sc.fit_transform(X_train)
+```
+
+```python
+# Display the scaled training data
+X_train
+```
+
+```python
+# Visualize feature distributions with boxplots for each feature, separated by the outcome class
+plt.figure(figsize=(12, 6))
+features = dataset.columns[:-1]  # Exclude 'Outcome' for boxplots
+for i, feature in enumerate(features, 1):
+    plt.subplot(2, 4, i)
+    sns.boxplot(x='Outcome', y=feature, data=dataset)
+    plt.title(f'Boxplot of {feature} by Outcome')
+plt.tight_layout()
+plt.show()
+```
+
+```python
+# Generate a heatmap to visualize correlation between features
+plt.figure(figsize=(10, 8))
+corr = dataset.corr()  # Calculate the correlation matrix
+sns.heatmap(corr, annot=True, fmt='.2f', cmap='coolwarm', square=True)
+plt.title('Correlation Heatmap')
+plt.show()
+```
+
+```python
+# Pairplot to visualize relationships between features, colored by 'Outcome'
+sns.pairplot(dataset, hue='Outcome', palette='Set1')
+plt.suptitle('Pairplot of Pima Indian Diabetes Dataset', y=1.02)
+plt.show()
+```
+
+**Building and Training the Model**
+
+**Building the Model**
+
+
+```python
+# Import LogisticRegression from scikit-learn to build the classification model
+from sklearn.linear_model import LogisticRegression
+
+# Initialize the logistic regression model with a random state for reproducibility
+model = LogisticRegression(random_state=0)
+```
+
+**Training the model**
+
+
+```python
+# Train (fit) the model using the training data
+model.fit(X_train, y_train)
+
+```
+
+
+```python
+# Make predictions on the test set after scaling
+y_pred = model.predict(sc.transform(X_test))
+```
+
+
+```python
+# Display the predicted outcomes for the test set
+y_pred
+
+```
+
+```python
+# Display the actual outcomes for the test set
+y_test
+```
+
+
+```python
+# Example predictions using new data instances
+model.predict(sc.transform([[6, 148, 72, 35, 0, 33.6, 0.627, 50]]))  # New patient 1
+
+
+```
+
+
+
+```python
+model.predict(sc.transform([[1, 85, 66, 29, 0, 26.6, 0.351, 31]]))   # New patient 2
+```
+
+**Evaluating the Model**
+
+**Accuracy** 
+
+
+```python
+# Import accuracy_score metric to evaluate prediction accuracy of the model
+from sklearn.metrics import accuracy_score
+
+# Calculate and display the accuracy of the model on the test set
+y_pred = model.predict(sc.transform(X_test))  # Make predictions on test set
+accuracy_score(y_test, y_pred)  # Calculate and display accuracy
+```
+
+**Visualization**
+
+
+```python
+# Create a DataFrame to compare actual vs predicted values
+results = pd.DataFrame({'Actual': y_test, 'Predicted': y_pred})
+
+# Visualize the count of actual vs predicted diabetes outcomes
+plt.figure(figsize=(10, 6))
+sns.countplot(data=results.melt(), x='value', hue='variable', palette='Set2')
+plt.title('Predicted vs Actual Diabetes Outcomes')
+plt.xlabel('Outcome')
+plt.ylabel('Count')
+plt.xticks(ticks=[0, 1], labels=['No Diabetes', 'Diabetes'])
+plt.legend(title='Legend', labels=['Actual', 'Predicted'])
+plt.show()
+```
+
+```python
+# Import confusion_matrix to visualize model performance on classification
+from sklearn.metrics import confusion_matrix
+
+# Generate a confusion matrix for actual vs predicted outcomes
+cm = confusion_matrix(y_test, y_pred)
+
+# Plot the confusion matrix to show true positives, false positives, etc.
+plt.figure(figsize=(8, 6))
+sns.heatmap(cm, annot=True, fmt='d', cmap='Blues',
+            xticklabels=['No Diabetes', 'Diabetes'],
+            yticklabels=['No Diabetes', 'Diabetes'])
+plt.title('Confusion Matrix')
+plt.xlabel('Predicted Label')
+plt.ylabel('True Label')
+plt.show()
+```
+
+```python
+# Calculate and display the accuracy using confusion matrix components
+(98 + 29) / (98 + 29 + 18 + 9)
+```
+
+```python
+# Import and calculate F1 Score for model performance
+from sklearn.metrics import f1_score
+
+# Compute F1 score, which considers both precision and recall, for the model
+f1 = f1_score(y_test, y_pred)
+print(f"F1 Score: {f1:.4f}")
+```
+
+```python
+# Import and calculate Recall Score for model performance
+from sklearn.metrics import recall_score
+
+# Compute recall score to measure sensitivity to positive outcomes
+recall = recall_score(y_test, y_pred)
+print(f"Recall: {recall:.4f}")
+```
 
 
 ## References
