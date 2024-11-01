@@ -104,7 +104,7 @@
 
 
 
-## **Linear Regression** (#a-what-is-linear-regression)
+## **Linear Regression** 
 
 ### A. What is Linear Regression?
 
