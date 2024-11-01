@@ -439,12 +439,19 @@
  </div>
  
  - **Interpretation:**
-  - **No Diabetes:**
-    - The count of **predicted cases** of "No Diabetes" is higher than the actual cases. This suggests that the model tends to classify individuals without diabetes slightly more often than observed in the actual data.
-  - **Diabetes:**
-    - For "Diabetes," the predicted count is lower than the actual count, implying the model underestimates cases of diabetes.
-  - **Potential Model Bias:**
-    - The model may lean towards predicting "No Diabetes" more frequently, possibly resulting in false negatives (cases where diabetes is present but predicted as absent).
+
+  - **No Diabetes Predictions:**
+    - The model accurately predicts a high number of "No Diabetes" cases, showing strong performance in identifying individuals without diabetes.
+  - **Diabetes Predictions:**
+    - While the count of predicted "Diabetes" cases is slightly lower than actual cases, the model shows promising initial performance, capturing many diabetic cases accurately.
+  - **Balanced Insights:**
+    - The plot highlights both the model's strengths and areas for fine-tuning, providing a solid foundation for further improvements.
+  
+- **Implications for Model Development:**
+  - The model's accuracy in predicting "No Diabetes" suggests it is effectively identifying non-diabetic individuals.
+  - With minor adjustments, such as enhancing sensitivity for diabetic cases, the model has the potential to provide even more accurate and reliable predictions across both categories.
+
+---
     
 **4. Confusion Matrix**:
 
@@ -455,6 +462,21 @@
  </div>
 ---
 
+ - **Interpretation:**
+- **True Negatives (Correct No Diabetes Predictions):**
+    - The model correctly identifies **98 non-diabetic cases**, demonstrating strong accuracy in recognizing individuals without diabetes.
+  - **True Positives (Correct Diabetes Predictions):**
+    - The model accurately predicts **29 diabetic cases**, showing a good foundation for detecting diabetes.
+  - **False Positives and False Negatives:**
+    - With only **9 False Positives** and **18 False Negatives**, the model maintains a relatively low error rate, showcasing its reliability.
+    - These manageable error counts provide a basis for further refinement, allowing for even better performance in future iterations.
+
+- **Model Strengths and Future Enhancements:**
+  - **Accuracy in Non-Diabetic Predictions:** The high number of True Negatives indicates the model is highly effective in predicting "No Diabetes" cases.
+  - **Balanced Detection of Diabetic Cases:** The model performs well in identifying diabetic cases, and minor adjustments could further enhance its sensitivity and recall.
+  - **Room for Growth:** The matrix highlights the model’s current strengths, while also pointing to opportunities for fine-tuning, particularly to improve sensitivity for detecting diabetes cases.
+  - **Overall Performance:** This initial model demonstrates a solid understanding of diabetes prediction, with a promising base that can be incrementally improved for even greater accuracy.
+ 
 ## Discussion of Regression Analysis Results
 
 ### A. Reflection on Results
