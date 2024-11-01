@@ -437,7 +437,14 @@
 ![Countplot logi](https://github.com/user-attachments/assets/994e8ef6-7728-4f28-a742-3f8ffb470be4)
 
  </div>
- 
+ - **Interpretation:**
+  - **No Diabetes:**
+    - The count of **predicted cases** of "No Diabetes" is higher than the actual cases. This suggests that the model tends to classify individuals without diabetes slightly more often than observed in the actual data.
+  - **Diabetes:**
+    - For "Diabetes," the predicted count is lower than the actual count, implying the model underestimates cases of diabetes.
+  - **Potential Model Bias:**
+    - The model may lean towards predicting "No Diabetes" more frequently, possibly resulting in false negatives (cases where diabetes is present but predicted as absent).
+    
 **4. Confusion Matrix**:
 
  <div align="center">
