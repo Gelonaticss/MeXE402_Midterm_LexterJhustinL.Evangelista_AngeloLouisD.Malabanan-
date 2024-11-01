@@ -27,8 +27,8 @@
    - [A. Reflection on Results](#a-reflection-on-results)
    - [B. Comparison of the Two Regression Methods](#b-comparison-of-the-two-regression-methods)
    - [C. Limitations](#c-limitations)
-6. [Code of Linear Regression]. (#code-of-linear-regression)
-7. [Code of Logistic Regression]. (#code-of-logistic-regression)
+6. [Code of Linear Regression](#code-of-linear-regression)
+7. [Code of Logistic Regression](#code-of-logistic-regression)
 8. [References](#references)
 9. [Group Members](#group-members)
 
