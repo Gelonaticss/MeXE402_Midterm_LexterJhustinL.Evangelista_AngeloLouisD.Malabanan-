@@ -517,6 +517,616 @@
 
 Overall, while both models provide useful insights and relatively strong performance, limitations such as sensitivity to linear assumptions, outliers, and complex relationships could potentially impact their predictive power. Addressing these limitations through additional model adjustments or using more advanced algorithms could further improve predictive accuracy.
 
+## Code of Linear Regression
+**Part 1 - Data Preprocessing**
+
+**Importing the dataset and libraries**
+
+```python
+# Import necessary libraries
+import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
+import numpy as np # linear algebra
+%matplotlib inline
+from pandas import read_csv
+#Lets load the dataset and sample some
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import mean_squared_error, r2_score
+
+# Suppress warnings for clean output
+import warnings
+warnings.filterwarnings('ignore')
+```
+
+**Loading and Understanding the Dataset**
+
+```python
+# [rows,columns]
+data = pd.read_csv('clearboston.csv')
+data
+
+```
+
+```python
+data.head(5) #display 5 rows of dataset
+
+#10,000 rows
+#data points collected from a combined cycle power plant over six years
+#5 columns: AT ambient temp,V exhaust vacuum, AP ambient pressure, RH relative humdity, PE net hourly  electrical energy output
+# independent variables: AT, V, AP and RH
+# dependent variable: PE
+```
+
+
+```python
+# Check dataset info
+data.info()
+```
+
+```python
+# Check for any missing values in the dataset
+data.isnull().sum()
+```
+
+Checks for any missing values in the data.
+
+
+```python
+data.describe()
+```
+
+```python
+import seaborn as sns
+import matplotlib.pyplot as plt
+%matplotlib inline
+from scipy import stats
+
+fig, axs = plt.subplots(ncols=7, nrows=2, figsize=(20, 10))
+index = 0
+axs = axs.flatten()
+for k,v in data.items():
+    sns.boxplot(y=k, data=data, ax=axs[index])
+    index += 1
+plt.tight_layout(pad=0.4, w_pad=0.5, h_pad=5.0)
+```
+
+Columns like CRIM, ZN, RM, B seems to have outliers. Let's see the outliers percentage in every column.
+
+```python
+for k, v in data.items():
+        q1 = v.quantile(0.25)
+        q3 = v.quantile(0.75)
+        irq = q3 - q1
+        v_col = v[(v <= q1 - 1.5 * irq) | (v >= q3 + 1.5 * irq)]
+        perc = np.shape(v_col)[0] * 100.0 / np.shape(data)[0]
+        print("Column %s outliers = %.2f%%" % (k, perc))
+```
+
+**Removing MEDV outliers (MEDV = 50.0) before plotting more distributions**
+
+```python
+data = data[~(data['MEDV'] >= 50.0)]
+print(np.shape(data))
+```
+
+**Visualization of features plus MEDV distributions**
+
+```python
+fig, axs = plt.subplots(ncols=7, nrows=2, figsize=(20, 10))
+index = 0
+axs = axs.flatten()
+for k,v in data.items():
+    sns.distplot(v, ax=axs[index])
+    index += 1
+plt.tight_layout(pad=0.4, w_pad=0.5, h_pad=5.0)
+```
+
+
+```python
+plt.figure(figsize=(20, 10))
+sns.heatmap(data.corr().abs(),  annot=True)
+```
+
+```python
+from sklearn import preprocessing
+# Let's scale the columns before plotting them against MEDV
+min_max_scaler = preprocessing.MinMaxScaler()
+column_sels = ['LSTAT', 'INDUS', 'NOX', 'PTRATIO', 'RM', 'TAX', 'DIS', 'AGE']
+x = data.loc[:,column_sels]
+y = data['MEDV']
+x = pd.DataFrame(data=min_max_scaler.fit_transform(x), columns=column_sels)
+fig, axs = plt.subplots(ncols=4, nrows=2, figsize=(20, 10))
+index = 0
+axs = axs.flatten()
+for i, k in enumerate(column_sels):
+    sns.regplot(y=y, x=x[k], ax=axs[i])
+plt.tight_layout(pad=0.4, w_pad=0.5, h_pad=5.0)
+```
+
+So with these analysis, we may try predict MEDV with 'LSTAT', 'INDUS', 'NOX', 'PTRATIO', 'RM', 'TAX', 'DIS', 'AGE' features. Let's try to remove the skewness of the data trough log transformation.
+
+```python
+y =  np.log1p(y)
+for col in x.columns:
+    if np.abs(x[col].skew()) > 0.3:
+        x[col] = np.log1p(x[col])
+```
+
+**Separating the Data (Features and Target)**
+
+```python
+# Extract features and target
+X = data.drop('MEDV', axis=1)
+y = data['MEDV']
+#X: All the columns except# "MEDV" (the home price) are considered features (factors that help predict the home price).
+#y: The "MEDV" column is th#e target (what we're trying to predict: the home price).
+```
+
+**Splitting the Data for Training and Testing**
+
+
+```python
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=17)
+```
+
+
+```python
+X_train
+```
+
+```python
+X_test
+```
+
+```python
+y_train
+```
+
+```python
+y_test
+```
+
+```python
+# Initialize and fit the StandardScaler
+from sklearn.preprocessing import StandardScaler
+
+# Assuming X_train and X_test are DataFrames
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+```
+
+
+**Part 2 - Building and training the model**
+
+**Building and Training the Model**
+
+```python
+# linear_model is the module
+# LinearRegression is a class is defining that LinearRegression is a class within the linear_model module. 
+# It indicates that LinearRegression is a blueprint or template for creating objects that represent linear regression models.
+# Class is a pre-coded blueprint of something we want to build from which objects are created.
+# Initialize and train the Linear Regression model
+
+from sklearn.linear_model import LinearRegression
+model = LinearRegression()
+# fit is a method inside LinearRegression class - they are like functions.
+model.fit(X_train_scaled, y_train)
+```
+
+**Inference**
+
+```python
+cv_predictions = model.predict(X_test_scaled)
+cv_predictions
+```
+
+**Making Predictions on New Data**
+
+```python
+from sklearn.preprocessing import StandardScaler
+
+# Convert DataFrames to NumPy arrays
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train.values)
+X_test_scaled = scaler.transform(X_test.values)
+
+new_data = np.array([[0.02731, 18.0, 2.31, 0, 0.538, 6.575, 65.2, 4.0900, 1, 296.0, 15.3, 396.90, 4.98]])
+new_data_scaled = scaler.transform(new_data)
+predicted_value = model.predict(new_data_scaled)
+print(f"Predicted Value: {predicted_value[0]:.2f}")
+```
+
+**Part 3: Evaluating the Model**
+
+**Cross-Validation**
+
+```python
+# Perform cross-validation
+cv_predictions = model.predict(X_test_scaled)
+cv_mse = mean_squared_error(y_test, cv_predictions)
+print(f"Cross-Validation Mean Squared Error: {cv_mse:.4f}")
+```
+
+**R-Squared**
+
+```python
+r2 = r2_score(y_test, cv_predictions)
+print(f"R-squared: {r2:.4f}")
+```
+
+**Adjusted R-Squared**
+
+```python
+k = X_test_scaled.shape[1]
+n = X_test_scaled.shape[0]
+adj_r2 = 1-(1-r2)*(n-1)/(n-k-1)
+print("Adjusted R-squared:")
+adj_r2
+```
+
+**Getting Coefficients and Intercept**
+
+```python
+print("Coefficients:")
+print (model.coef_)
+
+print("Intercept:")
+print(model.intercept_)
+```
+
+**Comparing Actual vs Predicted Prices**
+
+```python
+results_df = pd.DataFrame({
+    'Actual Values': y_test.values,
+    'Predicted Values': cv_predictions
+})
+results_df.head(10)
+```
+
+
+**Visualizing Predictions**
+
+**Scatter Plot** 
+
+```python
+# Plotting the linear regression line
+plt.scatter(y_test, cv_predictions, alpha=0.7, label='Predicted')
+plt.plot([min(y_test), max(y_test)], [min(y_test), max(y_test)], linestyle='--', color='red', label='Perfect Prediction')
+plt.xlabel('Actual Values')
+plt.ylabel('Predicted Values')
+plt.title('Predicted vs. Actual Values')
+plt.legend()
+plt.show()
+
+```
+
+**Residual Plot**
+
+```python
+# Calculate residuals (difference between actual and predicted values)
+residuals = y_test - cv_predictions
+
+# Create a residual plot
+plt.figure(figsize=(8, 6))
+plt.scatter(cv_predictions, residuals, alpha=0.7, color='blue')
+plt.axhline(y=0, color='red', linestyle='--', label='Zero Error Line')
+plt.xlabel('Predicted Values')
+plt.ylabel('Residuals')
+plt.title('Residual Plot')
+plt.legend()
+plt.show()
+```
+
+## Code of Linear Regression
+<br>
+**Part 1 - Data Preprocessing**
+<br>
+**Importing the dataset and libraries**
+
+```python
+# Import necessary libraries
+import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
+import numpy as np # linear algebra
+%matplotlib inline
+from pandas import read_csv
+#Lets load the dataset and sample some
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import mean_squared_error, r2_score
+
+# Suppress warnings for clean output
+import warnings
+warnings.filterwarnings('ignore')
+```
+
+**Loading and Understanding the Dataset**
+
+```python
+# [rows,columns]
+data = pd.read_csv('clearboston.csv')
+data
+
+```
+
+```python
+data.head(5) #display 5 rows of dataset
+
+#10,000 rows
+#data points collected from a combined cycle power plant over six years
+#5 columns: AT ambient temp,V exhaust vacuum, AP ambient pressure, RH relative humdity, PE net hourly  electrical energy output
+# independent variables: AT, V, AP and RH
+# dependent variable: PE
+```
+
+
+```python
+# Check dataset info
+data.info()
+```
+
+```python
+# Check for any missing values in the dataset
+data.isnull().sum()
+```
+
+Checks for any missing values in the data.
+
+
+```python
+data.describe()
+```
+
+```python
+import seaborn as sns
+import matplotlib.pyplot as plt
+%matplotlib inline
+from scipy import stats
+
+fig, axs = plt.subplots(ncols=7, nrows=2, figsize=(20, 10))
+index = 0
+axs = axs.flatten()
+for k,v in data.items():
+    sns.boxplot(y=k, data=data, ax=axs[index])
+    index += 1
+plt.tight_layout(pad=0.4, w_pad=0.5, h_pad=5.0)
+```
+
+Columns like CRIM, ZN, RM, B seems to have outliers. Let's see the outliers percentage in every column.
+
+```python
+for k, v in data.items():
+        q1 = v.quantile(0.25)
+        q3 = v.quantile(0.75)
+        irq = q3 - q1
+        v_col = v[(v <= q1 - 1.5 * irq) | (v >= q3 + 1.5 * irq)]
+        perc = np.shape(v_col)[0] * 100.0 / np.shape(data)[0]
+        print("Column %s outliers = %.2f%%" % (k, perc))
+```
+
+**Removing MEDV outliers (MEDV = 50.0) before plotting more distributions**
+
+```python
+data = data[~(data['MEDV'] >= 50.0)]
+print(np.shape(data))
+```
+
+**Visualization of features plus MEDV distributions**
+
+```python
+fig, axs = plt.subplots(ncols=7, nrows=2, figsize=(20, 10))
+index = 0
+axs = axs.flatten()
+for k,v in data.items():
+    sns.distplot(v, ax=axs[index])
+    index += 1
+plt.tight_layout(pad=0.4, w_pad=0.5, h_pad=5.0)
+```
+
+
+```python
+plt.figure(figsize=(20, 10))
+sns.heatmap(data.corr().abs(),  annot=True)
+```
+
+```python
+from sklearn import preprocessing
+# Let's scale the columns before plotting them against MEDV
+min_max_scaler = preprocessing.MinMaxScaler()
+column_sels = ['LSTAT', 'INDUS', 'NOX', 'PTRATIO', 'RM', 'TAX', 'DIS', 'AGE']
+x = data.loc[:,column_sels]
+y = data['MEDV']
+x = pd.DataFrame(data=min_max_scaler.fit_transform(x), columns=column_sels)
+fig, axs = plt.subplots(ncols=4, nrows=2, figsize=(20, 10))
+index = 0
+axs = axs.flatten()
+for i, k in enumerate(column_sels):
+    sns.regplot(y=y, x=x[k], ax=axs[i])
+plt.tight_layout(pad=0.4, w_pad=0.5, h_pad=5.0)
+```
+
+So with these analysis, we may try predict MEDV with 'LSTAT', 'INDUS', 'NOX', 'PTRATIO', 'RM', 'TAX', 'DIS', 'AGE' features. Let's try to remove the skewness of the data trough log transformation.
+
+```python
+y =  np.log1p(y)
+for col in x.columns:
+    if np.abs(x[col].skew()) > 0.3:
+        x[col] = np.log1p(x[col])
+```
+
+**Separating the Data (Features and Target)**
+
+```python
+# Extract features and target
+X = data.drop('MEDV', axis=1)
+y = data['MEDV']
+#X: All the columns except# "MEDV" (the home price) are considered features (factors that help predict the home price).
+#y: The "MEDV" column is th#e target (what we're trying to predict: the home price).
+```
+
+**Splitting the Data for Training and Testing**
+
+
+```python
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=17)
+```
+
+
+```python
+X_train
+```
+
+```python
+X_test
+```
+
+```python
+y_train
+```
+
+```python
+y_test
+```
+
+```python
+# Initialize and fit the StandardScaler
+from sklearn.preprocessing import StandardScaler
+
+# Assuming X_train and X_test are DataFrames
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+```
+
+
+**Part 2 - Building and training the model**
+
+**Building and Training the Model**
+
+```python
+# linear_model is the module
+# LinearRegression is a class is defining that LinearRegression is a class within the linear_model module. 
+# It indicates that LinearRegression is a blueprint or template for creating objects that represent linear regression models.
+# Class is a pre-coded blueprint of something we want to build from which objects are created.
+# Initialize and train the Linear Regression model
+
+from sklearn.linear_model import LinearRegression
+model = LinearRegression()
+# fit is a method inside LinearRegression class - they are like functions.
+model.fit(X_train_scaled, y_train)
+```
+
+**Inference**
+
+```python
+cv_predictions = model.predict(X_test_scaled)
+cv_predictions
+```
+
+**Making Predictions on New Data**
+
+```python
+from sklearn.preprocessing import StandardScaler
+
+# Convert DataFrames to NumPy arrays
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train.values)
+X_test_scaled = scaler.transform(X_test.values)
+
+new_data = np.array([[0.02731, 18.0, 2.31, 0, 0.538, 6.575, 65.2, 4.0900, 1, 296.0, 15.3, 396.90, 4.98]])
+new_data_scaled = scaler.transform(new_data)
+predicted_value = model.predict(new_data_scaled)
+print(f"Predicted Value: {predicted_value[0]:.2f}")
+```
+
+**Part 3: Evaluating the Model**
+
+**Cross-Validation**
+
+```python
+# Perform cross-validation
+cv_predictions = model.predict(X_test_scaled)
+cv_mse = mean_squared_error(y_test, cv_predictions)
+print(f"Cross-Validation Mean Squared Error: {cv_mse:.4f}")
+```
+
+**R-Squared**
+
+```python
+r2 = r2_score(y_test, cv_predictions)
+print(f"R-squared: {r2:.4f}")
+```
+
+**Adjusted R-Squared**
+
+```python
+k = X_test_scaled.shape[1]
+n = X_test_scaled.shape[0]
+adj_r2 = 1-(1-r2)*(n-1)/(n-k-1)
+print("Adjusted R-squared:")
+adj_r2
+```
+
+**Getting Coefficients and Intercept**
+
+```python
+print("Coefficients:")
+print (model.coef_)
+
+print("Intercept:")
+print(model.intercept_)
+```
+
+**Comparing Actual vs Predicted Prices**
+
+```python
+results_df = pd.DataFrame({
+    'Actual Values': y_test.values,
+    'Predicted Values': cv_predictions
+})
+results_df.head(10)
+```
+
+
+**Visualizing Predictions**
+
+**Scatter Plot** 
+
+```python
+# Plotting the linear regression line
+plt.scatter(y_test, cv_predictions, alpha=0.7, label='Predicted')
+plt.plot([min(y_test), max(y_test)], [min(y_test), max(y_test)], linestyle='--', color='red', label='Perfect Prediction')
+plt.xlabel('Actual Values')
+plt.ylabel('Predicted Values')
+plt.title('Predicted vs. Actual Values')
+plt.legend()
+plt.show()
+
+```
+
+**Residual Plot**
+
+```python
+# Calculate residuals (difference between actual and predicted values)
+residuals = y_test - cv_predictions
+
+# Create a residual plot
+plt.figure(figsize=(8, 6))
+plt.scatter(cv_predictions, residuals, alpha=0.7, color='blue')
+plt.axhline(y=0, color='red', linestyle='--', label='Zero Error Line')
+plt.xlabel('Predicted Values')
+plt.ylabel('Residuals')
+plt.title('Residual Plot')
+plt.legend()
+plt.show()
+```
+
+
+## Code of Logistic Regression
+
 
 ## References
 
