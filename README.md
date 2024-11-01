@@ -244,7 +244,7 @@
 - **Automatic Feature Importance Evaluation:** These models can assess feature importance, helping in selecting the most influential features. Linear Regression requires separate statistical tests to determine feature importance.
 
 
-## **Introduction to Logistic Regression**
+## **Logistic Regression**
 
 ### **What is Logistic Regression?**
 
