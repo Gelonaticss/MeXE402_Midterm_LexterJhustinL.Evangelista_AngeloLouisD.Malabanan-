@@ -1,9 +1,9 @@
 # Midterm Project for Elective 2
 ## Table of Contents
 
-1. [Abstract of the Project](#abstract-of-the-project)
-2. [Project Objectives](#project-objectives)
-3. [Linear Regression](#linear-regression)
+I. [Abstract of the Project](#abstract-of-the-project)
+II. [Project Objectives](#project-objectives)
+III. [Linear Regression](#linear-regression)
    - [A. What is Linear Regression?](#a-what-is-linear-regression)
    - [B. Overview of Linear Regression for the Boston Housing Dataset](#b-overview-of-linear-regression-for-the-boston-housing-dataset)
    - [C. Dataset Description](#c-dataset-description)
@@ -14,7 +14,7 @@
    - [H. Methodology](#h-methodology)
    - [I. Summary of Findings](#i-summary-of-findings)
    - [J. Why Other Models Perform Better Than Linear Regression](#j-why-other-models-perform-better-than-linear-regression)
-4. [Logistic Regression](#logistic-regression)
+IV. [Logistic Regression](#logistic-regression)
    - [A. What is Logistic Regression?](#a-what-is-logistic-regression)
    - [B. Dataset for Logistic Regression (Pima Indian Diabetes)](#b-dataset-for-logistic-regression-pima-indian-diabetes)
    - [C. Why "Outcome" (Presence of Diabetes) Should Be the Dependent Variable](#c-why-outcome-presence-of-diabetes-should-be-the-dependent-variable)
@@ -23,13 +23,13 @@
    - [F. Initial Observations of the Dataset](#f-initial-observations-of-the-dataset)
    - [G. Methodology](#g-methodology)
    - [H. Summary of Findings](#h-summary-of-findings)
-5. [Discussion of Regression Analysis Results](#discussion-of-regression-analysis-results)
+V. [Discussion of Regression Analysis Results](#discussion-of-regression-analysis-results)
    - [A. Reflection on Results](#a-reflection-on-results)
    - [B. Comparison of the Two Regression Methods](#b-comparison-of-the-two-regression-methods)
    - [C. Limitations](#c-limitations)
-6. [References](#references)
-7. [Group Members](#group-members)
-8. 
+VI. [References](#references)
+VII. [Group Members](#group-members)
+
 ## Abstract of the Project
 1. **Project Overview**:
    - This project explores predictive modeling using linear and logistic regression techniques to analyze real-world data.
