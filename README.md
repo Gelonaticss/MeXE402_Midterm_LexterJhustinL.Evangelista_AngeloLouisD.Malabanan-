@@ -779,6 +779,21 @@ print("Adjusted R-squared:")
 adj_r2
 ```
 
+**Getting Mean Absolute Error and Root Mean Squared Error**
+
+```python
+from sklearn.metrics import mean_absolute_error, mean_squared_error
+import numpy as np
+
+# Assuming `y_test` is the actual values and `y_pred` is the predicted values from your model
+mae = mean_absolute_error(y_test, cv_predictions)
+rmse = np.sqrt(mean_squared_error(y_test, cv_predictions))
+
+print(f"Mean Absolute Error (MAE): {mae}")
+print(f"Root Mean Squared Error (RMSE): {rmse}")
+```
+
+
 **Getting Coefficients and Intercept**
 
 ```python
