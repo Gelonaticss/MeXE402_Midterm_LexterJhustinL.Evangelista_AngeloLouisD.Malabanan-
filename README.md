@@ -238,6 +238,15 @@
    - **Adjusted R-squared**: 0.8018
      - The Adjusted R² compensates for the number of predictors, adjusting R² downward if unnecessary variables are included.
      - Here, an adjusted R² of 0.8018 suggests that most predictors are relevant, as there is only a slight reduction from the standard R².
+    
+   - **Mean Absolute Error (MAE): 2.23**
+  - On average, the model's predictions are **only 2.23 units away** from the actual values, indicating **consistent and reliable predictions** close to real data.
+  - This low MAE demonstrates that the model maintains a **strong ability to generalize**, keeping most predictions close to observed values.
+
+- **Root Mean Squared Error (RMSE): 2.85**
+  - The RMSE of 2.85, close to the MAE, reflects that **most predictions have small deviations** from the actual values.
+  - The RMSE slightly higher than MAE suggests that the model **handles variations well**, capturing both the general trend and some of the outliers effectively.
+  - This RMSE value showcases the model’s **robust performance** across different data points.
 
 2. **Feature Impact Analysis (Model Coefficients)**
    - Coefficients represent the impact of each feature on `MEDV`. A positive coefficient implies that an increase in the feature value will increase `MEDV`, while a negative coefficient implies the opposite.
