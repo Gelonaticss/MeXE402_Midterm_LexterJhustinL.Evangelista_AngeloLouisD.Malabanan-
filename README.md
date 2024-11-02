@@ -498,8 +498,7 @@
     - **Feature Impact Analysis** revealed that features like **Crime Rate (CRIM)** and **Nitric Oxide Concentration (NOX)** negatively impact housing prices, while features such as the **Average Number of Rooms (RM)** and **Accessibility to Highways (RAD)** positively influence prices.
     - **Mean Absolute Error (MAE): 2.23**
      - On average, the model's predictions are **only 2.23 units away** from the actual values, indicating **consistent and reliable predictions** close to real data.This low MAE demonstrates that the model maintains a **strong ability to generalize**, keeping most predictions close to observed values.
-
-   - **Root Mean Squared Error (RMSE): 2.85**
+    - **Root Mean Squared Error (RMSE): 2.85**
      - The RMSE of 2.85, close to the MAE, reflects that **most predictions have small deviations** from the actual values.The RMSE slightly higher than MAE suggests that the model **handles variations well**, capturing both the general trend and some of the outliers effectively.This RMSE value showcases the model’s **robust performance** across different data points.
 
 - **Logistic Regression**:
