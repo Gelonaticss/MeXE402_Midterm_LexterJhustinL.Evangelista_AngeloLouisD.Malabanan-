@@ -1432,6 +1432,7 @@ print(f"Recall: {recall:.4f}")
 9. Vincent Lugat. (2019) *Pima Indians Diabetes - EDA & Prediction* [Link](https://www.kaggle.com/code/vincentlugat/pima-indians-diabetes-eda-prediction-0-906)
 10. Manimala. (2017) *Boston House Prices Dataset* [Link](https://www.kaggle.com/datasets/vikrishnan/boston-house-prices)
 11. UCI Machine Learning. (2016) *Pima Indians Diabetes Database* [Link](https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database)
+12. MikkoDT. (2024) *Midterm Instructions* [Link](https://github.com/MikkoDT/MeXE402_Midterm_4102)
 
 ## Group Members
 1. Evangelista, Lexter Jhustin L. (20-60481)
