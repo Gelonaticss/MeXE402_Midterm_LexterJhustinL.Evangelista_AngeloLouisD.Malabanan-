@@ -779,6 +779,21 @@ print("Adjusted R-squared:")
 adj_r2
 ```
 
+**Getting Mean Absolute Error and Root Mean Squared Error**
+
+```python
+from sklearn.metrics import mean_absolute_error, mean_squared_error
+import numpy as np
+
+# Assuming `y_test` is the actual values and `y_pred` is the predicted values from your model
+mae = mean_absolute_error(y_test, cv_predictions)
+rmse = np.sqrt(mean_squared_error(y_test, cv_predictions))
+
+print(f"Mean Absolute Error (MAE): {mae}")
+print(f"Root Mean Squared Error (RMSE): {rmse}")
+```
+
+
 **Getting Coefficients and Intercept**
 
 ```python
@@ -1415,6 +1430,9 @@ print(f"Recall: {recall:.4f}")
 7. Chang, V., Bailey, J., Xu, Q.A. et al. (2022). *Pima Indians diabetes mellitus classification based on machine learning (ML) algorithms.* [Link](https://doi.org/10.1007/s00521-022-07049-z)
 8. shrutimechlearn. *Step by step diabetes classification*. [Link](https://www.kaggle.com/code/shrutimechlearn/step-by-step-diabetes-classification)
 9. Vincent Lugat. (2019) *Pima Indians Diabetes - EDA & Prediction* [Link](https://www.kaggle.com/code/vincentlugat/pima-indians-diabetes-eda-prediction-0-906)
+10. Manimala. (2017) *Boston House Prices Dataset* [Link](https://www.kaggle.com/datasets/vikrishnan/boston-house-prices)
+11. UCI Machine Learning. (2016) *Pima Indians Diabetes Database* [Link](https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database)
+12. MikkoDT. (2024) *Midterm Instructions* [Link](https://github.com/MikkoDT/MeXE402_Midterm_4102)
 
 ## Group Members
 1. Evangelista, Lexter Jhustin L. (20-60481)
